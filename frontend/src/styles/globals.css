@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+:root {
+    --background: #ffffff;
+    --foreground: #171717;
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-poppins: var(--font-poppins);
+    --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer utilities {
+    .container {
+        @apply max-w-320 mx-auto px-4 lg:px-2;
+    }
+}

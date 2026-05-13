@@ -1,0 +1,110 @@
+{
+  "notfound": {
+    "title": "Axtardığınız Səhifə Tapılmadı",
+    "description": "Axtardığınız səhifə mövcud deyil və ya silinib. Zəhmət olmasa səhifəni yenidən yoxlayın və ya ana səhifəyə qayıdın.",
+    "button": "Geriyə qayıt"
+  },
+  "noResult": {
+    "title": "Axtarışınıza uyğun nəticə tapılmadı",
+    "description": "Axtardığınız məlumat tapılmadı. Başqa bir sorğu ilə yenidən cəhd edin!"
+  },
+  "noResultComponent": {
+    "title": "Məlumat tapılmadı",
+    "description": "Burada hələ heç bir məlumat mövcud deyil. Tezliklə yenilənəcək!",
+    "btn": "Ana səhifəyə qayıt"
+  },
+  "Contact": {
+    "meta": {
+      "title": "Əlaqə | Şirkət Adı",
+      "description": "Bizimlə əlaqə saxlayın"
+    },
+    "info": {
+      "title": "Bizimlə Əlaqə Saxlayın",
+      "description": "Aşağıdakı üsullarla bizimlə əlaqə saxlaya bilərsiniz",
+      "address": {
+        "title": "Ünvan",
+        "content": "Bakı şəhəri, Azərbaycan",
+        "subContent": "Nizami rayonu, Əhməd Rəcəbli küç. 1"
+      },
+      "phone": {
+        "title": "Telefon",
+        "content": "+994 50 123 45 67",
+        "subContent": "Həftə içi 09:00 - 18:00"
+      },
+      "email": {
+        "title": "Email",
+        "content": "info@company.az",
+        "subContent": "24 saat ərzində cavab"
+      },
+      "hours": {
+        "title": "İş saatları",
+        "content": "B.e - Ş. 09:00 - 18:00",
+        "subContent": "Şənbə və Bazar - bağlı"
+      }
+    },
+    "social": {
+      "title": "Bizi izləyin"
+    },
+    "form": {
+      "title": "Mesaj Göndərin",
+      "subtitle": "Formu doldurun, sizinlə əlaqə saxlayacağıq",
+      "fields": {
+        "name": {
+          "label": "Ad Soyad",
+          "placeholder": "Adınız və soyadınız"
+        },
+        "email": {
+          "label": "Email ünvanı",
+          "placeholder": "email@example.com"
+        },
+        "phone": {
+          "label": "Telefon nömrəsi",
+          "placeholder": "+994 50 123 45 67"
+        },
+        "subject": {
+          "label": "Mövzu",
+          "placeholder": "Mesajınızın mövzusu"
+        },
+        "message": {
+          "label": "Mesajınız",
+          "placeholder": "Mesajınızı buraya yazın..."
+        }
+      },
+      "privacy": {
+        "text": "Məlumatların işlənməsinə razıyam",
+        "link": "Məxfilik siyasəti"
+      },
+      "submit": "Mesaj Göndər",
+      "submitting": "Göndərilir...",
+      "success": {
+        "title": "Təşəkkür edirik!",
+        "message": "Mesajınız uğurla göndərildi. Ən qısa zamanda sizinlə əlaqə saxlayacağıq.",
+        "newMessage": "Yeni mesaj yaz"
+      },
+      "error": "Xəta baş verdi. Zəhmət olmasa, yenidən cəhd edin."
+    },
+    "validation": {
+      "name": {
+        "min": "Ad soyad ən az 2 simvol olmalıdır",
+        "max": "Ad soyad ən çox 50 simvol ola bilər"
+      },
+      "email": {
+        "invalid": "Düzgün email ünvanı daxil edin"
+      },
+      "phone": {
+        "invalid": "Düzgün telefon nömrəsi daxil edin"
+      },
+      "subject": {
+        "min": "Mövzu ən az 5 simvol olmalıdır",
+        "max": "Mövzu ən çox 100 simvol ola bilər"
+      },
+      "message": {
+        "min": "Mesaj ən az 10 simvol olmalıdır",
+        "max": "Mesaj ən çox 1000 simvol ola bilər"
+      },
+      "privacy": {
+        "required": "Məxfilik siyasətini qəbul edin"
+      }
+    }
+  }
+}
