@@ -18,6 +18,7 @@ import Link from "next/link";
 import MobileSidebar from "@/ui/Sidebar";
 import { navLinks } from "@/data/constant";
 import { NavLink } from "@/data/interface";
+import { usePathname } from "next/navigation";
 
 interface HeaderProps {
     contact?: any;
@@ -26,7 +27,13 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ contact, socials, locale }) => {
+    const pathname = usePathname();
+    const isPresentation = pathname?.endsWith("/educrm") || pathname?.endsWith("/qrmenu") || pathname?.includes("/educrm/") || pathname?.includes("/qrmenu/");
+    
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    
+    if (isPresentation) return null;
+
     const { scrollY } = useScroll();
     const headerTopHeight = useTransform(scrollY, [0, 100], [40, 0]);
     const headerTopOpacity = useTransform(scrollY, [0, 50], [1, 0]);

@@ -1,0 +1,20 @@
+nohup: ignoring input
+
+> neyman-design@0.1.0 dev
+> next dev -p 3005
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3005
+- Network:       http://173.212.219.214:3005
+- Experiments (use with caution):
+  · cpus: 1
+  · optimizePackageImports
+  · turbopackMemoryLimit: 2048
+
+✓ Starting...
+✓ Ready in 2s
+ GET / 200 in 2.7s (compile: 1263ms, proxy.ts: 198ms, generate-params: 736ms, render: 1256ms)
+ HEAD / 200 in 711ms (compile: 90ms, proxy.ts: 26ms, generate-params: 62ms, render: 596ms)
+ GET / 200 in 738ms (compile: 82ms, proxy.ts: 27ms, generate-params: 50ms, render: 628ms)
+ GET / 200 in 583ms (compile: 57ms, proxy.ts: 10ms, generate-params: 43ms, render: 516ms)
+[?25h

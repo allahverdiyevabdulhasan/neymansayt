@@ -14,6 +14,7 @@ import {
 } from "react-icons/io5";
 import Logo from "@/globalComponent/Logo";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 import { getTranslated } from "@/lib/api";
 
@@ -24,8 +25,14 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ contact, socials, locale }) => {
+    const pathname = usePathname();
+    const isPresentation = pathname?.endsWith("/educrm") || pathname?.endsWith("/qrmenu") || pathname?.includes("/educrm/") || pathname?.includes("/qrmenu/");
+    
     const currentYear = new Date().getFullYear();
     const t = useTranslations();
+    
+    if (isPresentation) return null;
+
 
     const footerLinks = {
         services: [

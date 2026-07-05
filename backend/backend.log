@@ -1,0 +1,98 @@
+nohup: ignoring input
+Watching for file changes with StatReloader
+Not Found: /api/home/home-hero/
+[14/May/2026 02:29:10] "GET /api/home/home-hero/ HTTP/1.1" 404 14295
+[14/May/2026 02:29:10] "GET /api/contact/info/ HTTP/1.1" 200 2
+Not Found: /api/home/home-stats/
+[14/May/2026 02:29:10] "GET /api/home/home-stats/ HTTP/1.1" 404 14298
+[14/May/2026 02:29:10] "GET /api/contact/socials/ HTTP/1.1" 200 2
+Not Found: /api/services/services/
+[14/May/2026 02:29:10] "GET /api/services/services/ HTTP/1.1" 404 48
+Not Found: /api/projects/projects/
+[14/May/2026 02:29:10] "GET /api/projects/projects/ HTTP/1.1" 404 48
+Not Found: /api/home/work-process-steps/
+[14/May/2026 02:29:10] "GET /api/home/work-process-steps/ HTTP/1.1" 404 14322
+Not Found: /api/home/global-ctas/
+[14/May/2026 02:29:10] "GET /api/home/global-ctas/ HTTP/1.1" 404 14301
+Not Found: /api/contact/contact-info/
+[14/May/2026 02:29:10] "GET /api/contact/contact-info/ HTTP/1.1" 404 9694
+Not Found: /api/blogs/posts/
+[14/May/2026 02:29:10] "GET /api/blogs/posts/ HTTP/1.1" 404 45
+[14/May/2026 02:29:10] "GET /api/home/about/ HTTP/1.1" 200 2
+[14/May/2026 02:29:10] "GET /api/home/partners/ HTTP/1.1" 200 2
+Not Found: /api/home/home-hero/
+[14/May/2026 02:30:45] "GET /api/home/home-hero/ HTTP/1.1" 404 14295
+[14/May/2026 02:30:45] "GET /api/contact/info/ HTTP/1.1" 200 2
+Not Found: /api/home/home-stats/
+[14/May/2026 02:30:45] "GET /api/home/home-stats/ HTTP/1.1" 404 14298
+[14/May/2026 02:30:45] "GET /api/contact/socials/ HTTP/1.1" 200 2
+Not Found: /api/services/services/
+[14/May/2026 02:30:45] "GET /api/services/services/ HTTP/1.1" 404 48
+Not Found: /api/projects/projects/
+[14/May/2026 02:30:45] "GET /api/projects/projects/ HTTP/1.1" 404 48
+Not Found: /api/home/work-process-steps/
+[14/May/2026 02:30:45] "GET /api/home/work-process-steps/ HTTP/1.1" 404 14322
+Not Found: /api/home/global-ctas/
+[14/May/2026 02:30:45] "GET /api/home/global-ctas/ HTTP/1.1" 404 14301
+Not Found: /api/contact/contact-info/
+[14/May/2026 02:30:45] "GET /api/contact/contact-info/ HTTP/1.1" 404 9694
+Not Found: /api/blogs/posts/
+[14/May/2026 02:30:45] "GET /api/blogs/posts/ HTTP/1.1" 404 45
+[14/May/2026 02:30:45] "GET /api/home/about/ HTTP/1.1" 200 2
+[14/May/2026 02:30:45] "GET /api/home/partners/ HTTP/1.1" 200 2
+Not Found: /
+[14/May/2026 02:30:46] "HEAD / HTTP/1.0" 404 0
+JAZZMIN_UI_TWEAKS['dark_mode_theme'] is deprecated and ignored. Use default_theme_mode='auto' (or 'light'/'dark') instead. All themes now support light/dark via data-bs-theme.
+[14/May/2026 02:30:51] "HEAD /admin/login/ HTTP/1.0" 200 0
+Not Found: /api/home/home-hero/
+[14/May/2026 02:32:00] "GET /api/home/home-hero/ HTTP/1.1" 404 14295
+[14/May/2026 02:32:00] "GET /api/contact/info/ HTTP/1.1" 200 2
+Not Found: /api/home/home-stats/
+[14/May/2026 02:32:00] "GET /api/contact/socials/ HTTP/1.1" 200 2
+[14/May/2026 02:32:00] "GET /api/home/home-stats/ HTTP/1.1" 404 14298
+Not Found: /api/services/services/
+[14/May/2026 02:32:00] "GET /api/services/services/ HTTP/1.1" 404 48
+Not Found: /api/projects/projects/
+[14/May/2026 02:32:00] "GET /api/projects/projects/ HTTP/1.1" 404 48
+Not Found: /api/home/work-process-steps/
+[14/May/2026 02:32:00] "GET /api/home/work-process-steps/ HTTP/1.1" 404 14322
+Not Found: /api/home/global-ctas/
+[14/May/2026 02:32:01] "GET /api/home/global-ctas/ HTTP/1.1" 404 14301
+Not Found: /api/contact/contact-info/
+[14/May/2026 02:32:01] "GET /api/contact/contact-info/ HTTP/1.1" 404 9694
+Not Found: /api/blogs/posts/
+[14/May/2026 02:32:01] "GET /api/blogs/posts/ HTTP/1.1" 404 45
+[14/May/2026 02:32:01] "GET /api/home/about/ HTTP/1.1" 200 2
+[14/May/2026 02:32:01] "GET /api/home/partners/ HTTP/1.1" 200 2
+Not Found: /api/home/home-hero/
+[14/May/2026 02:32:38] "GET /api/home/home-hero/ HTTP/1.1" 404 14295
+[14/May/2026 02:32:38] "GET /api/contact/info/ HTTP/1.1" 200 2
+Not Found: /api/home/home-stats/
+[14/May/2026 02:32:38] "GET /api/contact/socials/ HTTP/1.1" 200 2
+[14/May/2026 02:32:38] "GET /api/home/home-stats/ HTTP/1.1" 404 14298
+Not Found: /api/services/services/
+[14/May/2026 02:32:38] "GET /api/services/services/ HTTP/1.1" 404 48
+Not Found: /api/projects/projects/
+[14/May/2026 02:32:38] "GET /api/projects/projects/ HTTP/1.1" 404 48
+Not Found: /api/home/work-process-steps/
+[14/May/2026 02:32:38] "GET /api/home/work-process-steps/ HTTP/1.1" 404 14322
+Not Found: /api/home/global-ctas/
+[14/May/2026 02:32:38] "GET /api/home/global-ctas/ HTTP/1.1" 404 14301
+Not Found: /api/contact/contact-info/
+[14/May/2026 02:32:38] "GET /api/contact/contact-info/ HTTP/1.1" 404 9694
+Not Found: /api/blogs/posts/
+[14/May/2026 02:32:38] "GET /api/blogs/posts/ HTTP/1.1" 404 45
+[14/May/2026 02:32:38] "GET /api/home/about/ HTTP/1.1" 200 2
+[14/May/2026 02:32:38] "GET /api/home/partners/ HTTP/1.1" 200 2
+Not Found: /
+[14/May/2026 02:32:58] "GET / HTTP/1.0" 404 4253
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 14, 2026 - 02:28:58
+Django version 6.0.2, using settings 'core.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/6.0/howto/deployment/

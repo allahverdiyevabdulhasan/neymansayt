@@ -4,10 +4,17 @@ import React, {useState, useEffect} from "react";
 import {motion, AnimatePresence} from "framer-motion";
 import {IoArrowForward, IoClose} from "react-icons/io5";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const StickyCTA: React.FC = () => {
+    const pathname = usePathname();
+    const isPresentation = pathname?.endsWith("/educrm") || pathname?.endsWith("/qrmenu") || pathname?.includes("/educrm/") || pathname?.includes("/qrmenu/");
+    
     const [isVisible, setIsVisible] = useState(false);
     const [isDismissed, setIsDismissed] = useState(false);
+    
+    if (isPresentation) return null;
+
 
     useEffect(() => {
         const handleScroll = () => {

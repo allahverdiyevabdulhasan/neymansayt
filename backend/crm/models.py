@@ -44,3 +44,15 @@ class CRMBenefit(models.Model):
         ordering = ['order']
         verbose_name = "CRM Üstünlüyü"
         verbose_name_plural = "CRM Üstünlükləri"
+
+class CRMNotification(models.Model):
+    time = models.CharField(max_length=100, default="12:00:00")
+    type = models.CharField(max_length=100, verbose_name="Log Tipi")
+    text = models.TextField(verbose_name="Log Məzmunu")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_at']
+        verbose_name = "CRM Bildirişi / Log"
+        verbose_name_plural = "CRM Bildirişləri / Loglar"
+

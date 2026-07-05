@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="az" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeymanTech Edutech CRM - Qiymət Paketləri</title>
+    <!-- Google Fonts: Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* CSS DİZAYN SİSTEMİ & TOKENS */
+        :root {
+            --bg-app: #f1f5f9;
+            --bg-card: #ffffff;
+            --bg-darker: #e2e8f0;
+            --text-main: #475569;
+            --text-title: #0f172a;
+            --text-light: #64748b;
+            --primary: #10b981;
+            --primary-rgb: 16, 185, 129;
+            --primary-glow: rgba(16, 185, 129, 0.1);
+            --secondary: #0ea5e9;
+            --secondary-rgb: 14, 165, 233;
+            --accent: #6366f1;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --border: #cbd5e1;
+            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 5px 15px -5px rgba(0, 0, 0, 0.03);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-display: 'Outfit', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --bg-app: #030712;
+            --bg-card: #0b0f19;
+            --bg-darker: #070a13;
+            --text-main: #94a3b8;
+            --text-title: #f8fafc;
+            --text-light: #64748b;
+            --primary: #10b981;
+            --primary-rgb: 16, 185, 129;
+            --primary-glow: rgba(16, 185, 129, 0.2);
+            --secondary: #38bdf8;
+            --secondary-rgb: 56, 189, 248;
+            --accent: #818cf8;
+            --danger: #f87171;
+            --warning: #fbbf24;
+            --border: #1f2937;
+            --card-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-app);
+            font-family: var(--font-body);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 50px 20px;
+            transition: background-color 0.5s ease;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(var(--primary-rgb), 0.06) 0%, transparent 70%);
+            top: -10%;
+            right: -10%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(var(--secondary-rgb), 0.05) 0%, transparent 70%);
+            bottom: -20%;
+            left: -10%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* HEADER BAR (NAVIGATION COMPONENT) */
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto 50px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 20px;
+            box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.3);
+        }
+
+        .brand-name {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 22px;
+            color: var(--text-title);
+            letter-spacing: -0.5px;
+        }
+
+        .brand-name span {
+            color: var(--primary);
+        }
+
+        .btn-theme-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-theme-toggle:hover {
+            background-color: var(--bg-card);
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* PRICING HERO SECTION */
+        .pricing-hero {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .badge-premium {
+            background-color: var(--primary-glow);
+            color: var(--primary);
+            border: 1px solid rgba(var(--primary-rgb), 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--text-title);
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-title span {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--text-main);
+        }
+
+        /* BILLING TOGGLE SWITCH */
+        .billing-toggle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .billing-label {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-title);
+            transition: var(--transition);
+        }
+
+        .billing-label.inactive {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--border);
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: #ffffff;
+            transition: .4s;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .discount-badge {
+            background-color: var(--warning);
+            color: #000000;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.2);
+            animation: bounce-floating 3s infinite;
+        }
+
+        /* PRICING GRID */
+        .pricing-grid {
+            max-width: 1200px;
+            margin: 0 auto 80px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .pricing-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(var(--primary-rgb), 0.3);
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.2);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--primary);
+            transform: scale(1.03);
+            box-shadow: 0 20px 45px -10px rgba(var(--primary-rgb), 0.15);
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.03) translateY(-6px);
+            box-shadow: 0 30px 60px -10px rgba(var(--primary-rgb), 0.25);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 6px 40px;
+            transform: rotate(45deg);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 10px rgba(var(--primary-rgb), 0.2);
+        }
+
+        .card-header h3 {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-title);
+            margin-bottom: 10px;
+        }
+
+        .card-header p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            min-height: 42px;
+        }
+
+        .price-box {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 25px;
+        }
+
+        .price-currency {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-title);
+        }
+
+        .price-val {
+            font-family: var(--font-display);
+            font-size: 54px;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1;
+            transition: var(--transition);
+        }
+
+        .price-period {
+            font-size: 15px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-grow: 1;
+        }
+
+        .feature-list li {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-main);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .feature-list li i {
+            color: var(--primary);
+            font-size: 16px;
+            margin-top: 2px;
+        }
+
+        .feature-list li.disabled {
+            color: var(--text-light);
+            opacity: 0.5;
+        }
+
+        .feature-list li.disabled i {
+            color: var(--text-light);
+        }
+
+        .btn-select {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background-color: var(--bg-card);
+            color: var(--text-title);
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-select:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background-color: var(--primary-glow);
+        }
+
+        .pricing-card.popular .btn-select {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.2);
+        }
+
+        .pricing-card.popular .btn-select:hover {
+            box-shadow: 0 8px 25px rgba(var(--primary-rgb), 0.35);
+            transform: translateY(-2px);
+        }
+
+        /* COMPARISON SECTION */
+        .comparison-section {
+            max-width: 1000px;
+            margin: 0 auto 80px auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .comparison-title {
+            text-align: center;
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-title);
+            margin-bottom: 40px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-table th {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--text-title);
+            background-color: var(--bg-darker);
+        }
+
+        .comparison-table td.feature-name {
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-title);
+            font-size: 14px;
+        }
+
+        .comparison-table tr:hover td {
+            background-color: rgba(var(--primary-rgb), 0.02);
+        }
+
+        .comparison-table i.check-yes {
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .comparison-table i.check-no {
+            color: var(--border);
+            font-size: 18px;
+        }
+
+        /* FAQ ACCORDION SECTION */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .faq-title {
+            text-align: center;
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-title);
+            margin-bottom: 40px;
+        }
+
+        .faq-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .faq-item {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-trigger {
+            width: 100%;
+            padding: 20px;
+            text-align: left;
+            background: transparent;
+            border: none;
+            color: var(--text-title);
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-trigger i {
+            transition: var(--transition);
+            color: var(--primary);
+        }
+
+        .faq-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), padding 0.3s ease;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-main);
+        }
+
+        .faq-item.open {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .faq-item.open .faq-trigger i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.open .faq-content {
+            padding: 0 20px 20px 20px;
+            max-height: 300px;
+            transition: max-height 0.3s cubic-bezier(0.95, 0.05, 0.795, 0.035), padding 0.3s ease;
+        }
+
+        /* DEMO REQUEST MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            width: 450px;
+            padding: 35px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            transform: scale(0.9);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.open .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-light);
+            font-size: 18px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--danger);
+        }
+
+        .modal-header h4 {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-title);
+            margin-bottom: 8px;
+        }
+
+        .modal-header p {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .input-control {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background-color: var(--bg-app);
+            color: var(--text-title);
+            font-size: 14px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .input-control:focus {
+            border-color: var(--primary);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            border: none;
+            color: #ffffff;
+            font-family: var(--font-display);
+            font-weight: 700;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.2);
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            box-shadow: 0 8px 25px rgba(var(--primary-rgb), 0.35);
+        }
+
+        .modal-success {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-card);
+            border-radius: 20px;
+            padding: 35px;
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        .modal-success.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-success i {
+            font-size: 54px;
+            color: var(--primary);
+            animation: bounce-floating 3s infinite;
+        }
+
+        /* WA floating */
+        .wa-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #25d366;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            cursor: pointer;
+            z-index: 80;
+            transition: var(--transition);
+        }
+
+        .wa-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes bounce-floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+            .pricing-card.popular {
+                transform: none;
+            }
+            .pricing-card.popular:hover {
+                transform: translateY(-8px);
+            }
+            .comparison-section {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- WA BUTTON -->
+    <div class="wa-btn" onclick="alert('WhatsApp Dəstək Xəttinə Yönləndirilir...')">
+        <i class="fa-brands fa-whatsapp"></i>
+    </div>
+
+    <!-- HEADER NAVIGATION -->
+    <nav class="nav-container">
+        <div class="brand-section">
+            <div class="brand-logo">N</div>
+            <h1 class="brand-name">NeymanTech <span>Edutech</span></h1>
+        </div>
+        <button class="btn-theme-toggle" id="theme-toggle" title="Mövzunu dəyiş">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <header class="pricing-hero">
+        <span class="badge-premium">Şəffaf Qiymətlər</span>
+        <h2 class="hero-title">Biznesiniz üçün <span>Doğru Paket</span></h2>
+        <p class="hero-desc">
+            Kağız və Excel xaosuna birdəfəlik son qoyun. Kursunuzun böyüklüyünə və ehtiyaclarına uyğun paket seçərək daxili sızmaları 0%-ə endirin.
+        </p>
+    </header>
+
+    <!-- BILLING SWITCHER -->
+    <div class="billing-toggle-container">
+        <span class="billing-label" id="monthly-label">Aylıq</span>
+        <label class="switch">
+            <input type="checkbox" id="billing-checkbox" onchange="toggleBilling()">
+            <span class="slider"></span>
+        </label>
+        <span class="billing-label inactive" id="yearly-label">İllik</span>
+        <span class="discount-badge"><i class="fa-solid fa-gift"></i> 2 AY HƏDİYYƏ! (20% Güzəşt)</span>
+    </div>
+
+    <!-- CARDS GRID -->
+    <section class="pricing-grid">
+        <!-- START PLAN -->
+        <div class="pricing-card">
+            <div class="card-header">
+                <h3>Start</h3>
+                <p>Kiçik və fəaliyyətə yeni başlayan tədris mərkəzləri üçün baza CRM modulu.</p>
+            </div>
+            <div class="price-box">
+                <span class="price-currency">₼</span>
+                <span class="price-val" id="price-start">99</span>
+                <span class="price-period">/ay</span>
+            </div>
+            <ul class="feature-list">
+                <li><i class="fa-solid fa-circle-check"></i> Potensial Müştəri (Lead) İdarəetməsi</li>
+                <li><i class="fa-solid fa-circle-check"></i> CRM Kanban Lövhəsi (Stage)</li>
+                <li><i class="fa-solid fa-circle-check"></i> Reklam Mənbəyi Analitikası</li>
+                <li><i class="fa-solid fa-circle-check"></i> Rəqəmsal Davamiyyət Jurnalı</li>
+                <li><i class="fa-solid fa-circle-check"></i> 1 Koordinator & 5 Müəllim Limiti</li>
+                <li class="disabled"><i class="fa-solid fa-circle-xmark"></i> Satış Komissiyası (SalesCommission)</li>
+                <li class="disabled"><i class="fa-solid fa-circle-xmark"></i> Çevik Maaş Modelləri</li>
+                <li class="disabled"><i class="fa-solid fa-circle-xmark"></i> Rəhbərlik Təsdiq Sorğuları</li>
+            </ul>
+            <button class="btn-select" onclick="openDemoModal('Start')">İndi Başla</button>
+        </div>
+
+        <!-- PROFESSIONAL PLAN -->
+        <div class="pricing-card popular">
+            <div class="popular-badge">MƏŞHUR SEÇİM</div>
+            <div class="card-header">
+                <h3>Professional</h3>
+                <p>Sürətlə inkişaf edən, maliyyə və maaş şəffaflığı axtaran orta ölçülü kurslar üçün.</p>
+            </div>
+            <div class="price-box">
+                <span class="price-currency">₼</span>
+                <span class="price-val" id="price-prof">199</span>
+                <span class="price-period">/ay</span>
+            </div>
+            <ul class="feature-list">
+                <li><i class="fa-solid fa-circle-check"></i> **Start planının bütün xüsusiyyətləri**</li>
+                <li><i class="fa-solid fa-circle-check"></i> Satış Komissiyası Sistemi (SalesCommission)</li>
+                <li><i class="fa-solid fa-circle-check"></i> Çevik Güzəşt (Discount) Sistemi & Validation</li>
+                <li><i class="fa-solid fa-circle-check"></i> Həftəlik Dərs Şablonları (WeeklyTemplate)</li>
+                <li><i class="fa-solid fa-circle-check"></i> 3 Müxtəlif Maaş Hesablama Modeli</li>
+                <li><i class="fa-solid fa-circle-check"></i> Avtomatik Faktura (Invoice) generatoru</li>
+                <li><i class="fa-solid fa-circle-check"></i> Hissəli Ödənişlər & Tranzaksiyalar</li>
+                <li><i class="fa-solid fa-circle-check"></i> 3 Koordinator & Limitsiz Müəllim</li>
+            </ul>
+            <button class="btn-select" onclick="openDemoModal('Professional')">Demo Sifariş Et</button>
+        </div>
+
+        <!-- ENTERPRISE PLAN -->
+        <div class="pricing-card">
+            <div class="card-header">
+                <h3>Enterprise</h3>
+                <p>Böyük akademiyalar, çoxfiliallı tədris müəssisələri və şəxsi bulud server istəyənlər üçün.</p>
+            </div>
+            <div class="price-box">
+                <span class="price-currency">₼</span>
+                <span class="price-val" id="price-ent">399</span>
+                <span class="price-period">/ay</span>
+            </div>
+            <ul class="feature-list">
+                <li><i class="fa-solid fa-circle-check"></i> **Professional planının bütün xüsusiyyətləri**</li>
+                <li><i class="fa-solid fa-circle-check"></i> Çoxlu Hesab İdarəetməsi (FinanceAccount)</li>
+                <li><i class="fa-solid fa-circle-check"></i> Rəhbərlik Təsdiq Sorğuları (Refund, Maaş, Qiymət)</li>
+                <li><i class="fa-solid fa-circle-check"></i> Dövri Xərclər (RecurringPayment)</li>
+                <li><i class="fa-solid fa-circle-check"></i> IP Üzrə Təhlükəsizlik Zənciri & Audit Logs</li>
+                <li><i class="fa-solid fa-circle-check"></i> Ad Günləri İdarəetməsi (StudentBirthdayAction)</li>
+                <li><i class="fa-solid fa-circle-check"></i> WhatsApp & SMS & Zoom API Dəstəyi</li>
+                <li><i class="fa-solid fa-circle-check"></i> Limitsiz Filial & Limitsiz İstifadəçi</li>
+            </ul>
+            <button class="btn-select" onclick="openDemoModal('Enterprise')">Bizimlə Əlaqə</button>
+        </div>
+    </section>
+
+    <!-- COMPARISON TABLE -->
+    <section class="comparison-section">
+        <h3 class="comparison-title">Detallı Paket Müqayisəsi</h3>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Xüsusiyyətlər</th>
+                    <th>Start</th>
+                    <th>Professional</th>
+                    <th>Enterprise</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="feature-name">Potensial Müştəri & CRM Kanban</td>
+                    <td><i class="fa-solid fa-circle-check check-yes"></i></td>
+                    <td><i class="fa-solid fa-circle-check check-yes"></i></td>
+                    <td><i class="fa-solid fa-circle-check check-yes"></i></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">İnformasiya Mənbəyi Analitikası</td>
+                    <td><i class="fa-solid fa-circle-check check-yes"></i></td>
+                    <td><i class="fa-solid fa-circle-check check-yes"></i></td>
+                    <td><i class="fa-solid fa-circle-check check-yes"></i></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Güzəşt Sistemi & Validation mühərriki</td>
+                    <td><i class="fa-solid fa-circle-xmark check-no"></i></td>
+                    <td><i class="fa-solid fa-circle-check check-yes"></i></td>
+                    <td><i class="fa-solid fa-circle-check check-yes"></i></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Müəllimlərin Maaş Modeli (3 növ)</td>
+                    <td><i class="fa-solid fa-circle-xmark check-no"></i></td>
+                    <td><i class="fa-solid fa-circle-check check-yes"></i></td>
+                    <td><i class="fa-solid fa-circle-check check-yes"></i></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Avtomatik Faktura Generatoru</td>
+                    <td><i class="fa-solid fa-circle-xmark check-no"></i></td>
+                    <td><i class="fa-solid fa-circle-check check-yes"></i></td>
+                    <td><i class="fa-solid fa-circle-check check-yes"></i></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Çoxlu Hesab & Tranzaksiyalar (Kassa, Bank)</td>
+                    <td><i class="fa-solid fa-circle-xmark check-no"></i></td>
+                    <td><i class="fa-solid fa-circle-xmark check-no"></i></td>
+                    <td><i class="fa-solid fa-circle-check check-yes"></i></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">CEO/Accountant rəqəmsal təsdiq sorğuları</td>
+                    <td><i class="fa-solid fa-circle-xmark check-no"></i></td>
+                    <td><i class="fa-solid fa-circle-xmark check-no"></i></td>
+                    <td><i class="fa-solid fa-circle-check check-yes"></i></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Audit Logs (UserGroupHistory / GroupHistory)</td>
+                    <td><i class="fa-solid fa-circle-xmark check-no"></i></td>
+                    <td>1 həftəlik loq</td>
+                    <td>Limitsiz arxiv</td>
+                </tr>
+                <tr>
+                    <td class="feature-name">WhatsApp, SMS & Zoom İnteqrasiyaları</td>
+                    <td><i class="fa-solid fa-circle-xmark check-no"></i></td>
+                    <td><i class="fa-solid fa-circle-xmark check-no"></i></td>
+                    <td><i class="fa-solid fa-circle-check check-yes"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+        <h3 class="faq-title">Tez-Tez Sorğulan Suallar</h3>
+        <div class="faq-accordion">
+            <div class="faq-item">
+                <button class="faq-trigger" onclick="toggleFaq(this)">
+                    Eyni anda faiz və sabit güzəştin tətbiqi necə bloklanır?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-content">
+                    Sistemimizin daxili biznes validasiya qaydalarına əsasən, bir müqaviləyə endirim tətbiq edilərkən verilənlər bazası səviyyəsində yoxlanış aparılır. Əgər menecer həm faiz, həm də sabit güzəşt məbləği daxil etməyə çalışarsa, sistem əməliyyatı bloklayır və yalnız bir variantın tətbiqinə icazə verir.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-trigger" onclick="toggleFaq(this)">
+                    Müəllim maaşlarının hesablanması necə aparılır?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-content">
+                    Müəllimlər üçün 3 fərqli maaş modeli (saatlıq dərs haqqı, qrup üzrə sabit ödəniş, tələbə sayına görə ödəniş) fəaliyyət göstərir. Jurnal davamiyyəti yazıldığı anda, keçilən dərs saatları və fəal tələbə sayı əsas götürülərək müəllim maaşları real vaxtda insan müdaxiləsi olmadan hesablanır.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-trigger" onclick="toggleFaq(this)">
+                    İllik ödəniş edildikdə hansı güzəştlər tətbiq olunur?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-content">
+                    İllik ödənişi seçdikdə sizə avtomatik olaraq **20% güzəşt** tətbiq edilir. Bu da faktiki olaraq illik ödənişdə 2 ayın tam şəkildə **HƏDİYYƏ** edilməsi deməkdir.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-trigger" onclick="toggleFaq(this)">
+                    Sistemi öz daxili serverimizdə (On-premise) qura bilərikmi?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-content">
+                    Bəli, "Enterprise" paketi çərçivəsində, sistemimizi sizin daxili təhlükəsizlik standartlarınıza uyğun olaraq Docker konteynerləri vasitəsilə tamamilə sizin mərkəzin xüsusi serverində (On-premise) yerləşdirə və məlumatları öz bazanızda saxlaya bilərik.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL OVERLAY -->
+    <div class="modal-overlay" id="demo-modal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeDemoModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <h4>Pulsuz Demo Sifarişi</h4>
+                <p>Seçdiyiniz plan: <strong style="color:var(--primary)" id="modal-plan-name">Professional</strong></p>
+            </div>
+            
+            <div class="input-group">
+                <label>Adınız Soyadınız</label>
+                <input type="text" id="m-name" class="input-control" placeholder="Məs. Əli Məmmədov">
+            </div>
+            <div class="input-group">
+                <label>Tədris Mərkəzi / Kurs Adı</label>
+                <input type="text" id="m-course" class="input-control" placeholder="Məs. Neyman Təhsil Mərkəzi">
+            </div>
+            <div class="input-group">
+                <label>Telefon Nömrəniz</label>
+                <input type="text" id="m-phone" class="input-control" placeholder="Məs. +994 50 000 00 00">
+            </div>
+
+            <button class="btn-submit" onclick="submitModalRequest()">Demo Sifarişini Gönder <i class="fa-solid fa-paper-plane"></i></button>
+
+            <!-- Success slide -->
+            <div class="modal-success" id="modal-success">
+                <i class="fa-solid fa-circle-check"></i>
+                <h4>Sifarişiniz Uğurla Qəbul Edildi!</h4>
+                <p>Təşəkkür edirik! NeymanTech komandası seçdiyiniz paket üzrə 24 saat ərzində sizinlə əlaqə saxlayacaqdır.</p>
+                <button class="btn-select" style="font-size:12px; padding:6px 12px; width:auto;" onclick="closeDemoModal()">Geri Dön</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const billingCheckbox = document.getElementById('billing-checkbox');
+        const monthlyLabel = document.getElementById('monthly-label');
+        const yearlyLabel = document.getElementById('yearly-label');
+
+        const pStart = document.getElementById('price-start');
+        const pProf = document.getElementById('price-prof');
+        const pEnt = document.getElementById('price-ent');
+
+        // Theme Toggle
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            themeToggle.querySelector('i').className = newTheme === 'light' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        });
+
+        // Billing Toggle Logic
+        function toggleBilling() {
+            if (billingCheckbox.checked) {
+                // Yearly (20% Discount)
+                pStart.innerText = '79';
+                pProf.innerText = '159';
+                pEnt.innerText = '319';
+                monthlyLabel.classList.add('inactive');
+                yearlyLabel.classList.remove('inactive');
+            } else {
+                // Monthly
+                pStart.innerText = '99';
+                pProf.innerText = '199';
+                pEnt.innerText = '399';
+                monthlyLabel.classList.remove('inactive');
+                yearlyLabel.classList.add('inactive');
+            }
+        }
+
+        // FAQ accordion
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            const isOpen = item.classList.contains('open');
+            
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            
+            if (!isOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        // MODAL MANAGEMENT
+        const modal = document.getElementById('demo-modal');
+        const modalPlanName = document.getElementById('modal-plan-name');
+        const successOverlay = document.getElementById('modal-success');
+
+        function openDemoModal(plan) {
+            modalPlanName.innerText = plan;
+            modal.classList.add('open');
+        }
+
+        function closeDemoModal() {
+            modal.classList.remove('open');
+            setTimeout(() => {
+                successOverlay.classList.remove('show');
+                document.getElementById('m-name').value = '';
+                document.getElementById('m-course').value = '';
+                document.getElementById('m-phone').value = '';
+            }, 300);
+        }
+
+        function submitModalRequest() {
+            const name = document.getElementById('m-name').value;
+            const course = document.getElementById('m-course').value;
+            const phone = document.getElementById('m-phone').value;
+
+            if (!name || !course || !phone) {
+                alert('Zəhmət olmasa bütün sahələri doldurun.');
+                return;
+            }
+
+            successOverlay.classList.add('show');
+        }
+    </script>
+</body>
+</html>

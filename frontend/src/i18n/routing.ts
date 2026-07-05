@@ -67,5 +67,16 @@ export const routing = defineRouting({
       en: "/video-gallery",
       ru: "/video-qallery",
     },
+    "/educrm": {
+      az: "/educrm",
+      en: "/educrm",
+      ru: "/educrm",
+    },
+    "/qrmenu": {
+      az: "/qrmenu",
+      en: "/qrmenu",
+      ru: "/qrmenu",
+    },
   },
 });
+

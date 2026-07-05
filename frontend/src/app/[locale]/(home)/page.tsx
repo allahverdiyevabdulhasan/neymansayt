@@ -9,6 +9,8 @@ import CTASection from "@/app/[locale]/(home)/_components/CTASection";
 import PortfolioSection from "@/app/[locale]/(home)/_components/ProjectsSection";
 import PartnersSection from "@/app/[locale]/(home)/_components/PartnersSection";
 import NewsSection from "@/app/[locale]/(home)/_components/BlogSection";
+import SystemsSlider from "@/app/[locale]/(home)/_components/SystemsSlider";
+
 
 interface Props {
     params: Promise<{ locale: string }>;
@@ -149,6 +151,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             <AboutSection stats={stats} data={dynamicAboutData} services={services} locale={locale} />
             <ProcessSection steps={steps} locale={locale} />
             <ProjectTracking locale={locale} />
+            <SystemsSlider locale={locale} />
             <ServicesSection services={services} locale={locale} />
             <CTASection data={dynamicCTAData} contact={contactInfo} locale={locale} />
             <PortfolioSection projects={projects} locale={locale} />

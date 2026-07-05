@@ -1,6 +1,6 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
-from .models import CRMFeature, CRMPricingPlan, CRMStat, CRMBenefit
+from .models import CRMFeature, CRMPricingPlan, CRMStat, CRMBenefit, CRMNotification
 
 @admin.register(CRMFeature)
 class CRMFeatureAdmin(TranslationAdmin):
@@ -17,3 +17,8 @@ class CRMStatAdmin(TranslationAdmin):
 @admin.register(CRMBenefit)
 class CRMBenefitAdmin(TranslationAdmin):
     list_display = ('text_az',)
+
+@admin.register(CRMNotification)
+class CRMNotificationAdmin(admin.ModelAdmin):
+    list_display = ('time', 'type', 'text', 'created_at')
+

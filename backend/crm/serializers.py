@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import CRMFeature, CRMPricingPlan, CRMStat, CRMBenefit
+from .models import CRMFeature, CRMPricingPlan, CRMStat, CRMBenefit, CRMNotification
 
 class CRMFeatureSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,3 +20,9 @@ class CRMBenefitSerializer(serializers.ModelSerializer):
     class Meta:
         model = CRMBenefit
         fields = '__all__'
+
+class CRMNotificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CRMNotification
+        fields = '__all__'
+

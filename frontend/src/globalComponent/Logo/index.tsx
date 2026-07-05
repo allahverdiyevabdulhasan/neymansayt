@@ -4,7 +4,7 @@ export default function Logo() {
     return (
         <Link href={"/"} className="flex items-center gap-3 shrink-0 group">
             <div className="relative flex-shrink-0 w-12 h-12 lg:w-14 lg:h-14 transition-transform group-hover:scale-[1.03]">
-                <svg viewBox="0 0 100 100" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="-20 -20 140 140" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
                     {/* The Blue Gear Background */}
                     <path
                         fill="#002dd1"

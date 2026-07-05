@@ -1,8 +1,8 @@
 from rest_framework import viewsets
-from .models import CRMFeature, CRMPricingPlan, CRMStat, CRMBenefit
+from .models import CRMFeature, CRMPricingPlan, CRMStat, CRMBenefit, CRMNotification
 from .serializers import (
     CRMFeatureSerializer, CRMPricingPlanSerializer,
-    CRMStatSerializer, CRMBenefitSerializer
+    CRMStatSerializer, CRMBenefitSerializer, CRMNotificationSerializer
 )
 
 class CRMFeatureViewSet(viewsets.ReadOnlyModelViewSet):
@@ -20,3 +20,8 @@ class CRMStatViewSet(viewsets.ReadOnlyModelViewSet):
 class CRMBenefitViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = CRMBenefit.objects.all()
     serializer_class = CRMBenefitSerializer
+
+class CRMNotificationViewSet(viewsets.ModelViewSet):
+    queryset = CRMNotification.objects.all()
+    serializer_class = CRMNotificationSerializer
+

@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-&@gnikh(s!i!1+$&7v)@03s+5aigb93b(&ovxvnfr6j@%7=c+7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'neymantech.com', 'www.neymantech.com', 'api.neymantech.com']
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+USE_X_FORWARDED_HOST = True
+USE_X_FORWARDED_PORT = True
 
 
 # Application definition
