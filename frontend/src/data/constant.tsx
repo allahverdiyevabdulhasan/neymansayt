@@ -1,11 +1,10 @@
 import {NavLink} from "@/data/interface";
 
 export const navLinks: NavLink[] = [
-    {name: "Ana Səhifə", href: "/"},
+    {name: "İşlərimiz", href: "/projects"},
+    {name: "Xidmətlərimiz", href: "/services"},
+    {name: "Məhsullar", href: "/products"},
+    {name: "Bloq", href: "/blogs"},
     {name: "Haqqımızda", href: "/about"},
-    {name: "Xidmətlər", href: "/services"},
-    {name: "Bloqlar", href: "/blogs"},
-    {name: "Lahiyələr", href: "/projects"},
-    {name: "CRM", href: "/crm"},
     {name: "Əlaqə", href: "/contact"},
 ];

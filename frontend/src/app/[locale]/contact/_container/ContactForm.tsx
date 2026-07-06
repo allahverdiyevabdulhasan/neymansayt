@@ -182,13 +182,20 @@ export default function ContactForm() {
                             error={errors.subject?.message}
                             required
                         >
-                            <input
+                            <select
                                 {...register('subject')}
-                                type="text"
-                                placeholder={t('form.fields.subject.placeholder')}
                                 className={inputClasses(errors.subject)}
                                 disabled={isSubmitting}
-                            />
+                            >
+                                <option value="">{t('form.fields.subject.placeholder')}</option>
+                                <option value="Vebsayt Hazırlanması">Vebsayt Hazırlanması</option>
+                                <option value="SaaS & CRM Sistemləri">SaaS & CRM Sistemləri</option>
+                                <option value="Mobil Tətbiq (iOS/Android)">Mobil Tətbiq (iOS/Android)</option>
+                                <option value="SEO və Rəqəmsal Marketinq">SEO və Rəqəmsal Marketinq</option>
+                                <option value="UI/UX Dizayn">UI/UX Dizayn</option>
+                                <option value="Startap Tech Partner Modeli">Startap Tech Partner Modeli</option>
+                                <option value="Digər">Digər</option>
+                            </select>
                         </FormField>
 
                         {/* Mesaj */}
@@ -320,10 +327,10 @@ function FormField({
 }
 
 function inputClasses(error?: { message?: string }) {
-    return `w-full px-4 py-3.5 rounded-xl border-2 bg-gray-50/50 transition-all duration-200 outline-none
+    return `w-full px-4 py-3.5 rounded-xl border-2 bg-gray-50/50 transition-all duration-300 outline-none
         ${error
-            ? 'border-red-300 focus:border-red-500 focus:bg-red-50/30 bg-red-50/30'
-            : 'border-gray-200 focus:border-blue-500 focus:bg-white hover:border-gray-300'
+            ? 'border-red-300 focus:border-red-500 focus:bg-red-50/30 bg-red-50/30 focus:ring-4 focus:ring-red-500/20'
+            : 'border-gray-200 focus:border-blue-500 focus:bg-white hover:border-gray-300 focus:ring-4 focus:ring-blue-500/20'
         }
         placeholder:text-gray-400 text-gray-900 disabled:opacity-60 disabled:cursor-not-allowed`;
 }

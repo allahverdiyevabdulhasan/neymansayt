@@ -68,8 +68,8 @@ const Header: React.FC<HeaderProps> = ({ contact, socials, locale }) => {
         setIsMobileMenuOpen(false);
     };
 
-    const tel = contact?.phone || "+994 50 123 45 67";
-    const email = contact?.email || "info@neyman.az";
+    const tel = contact?.phone || "+90 552 153 23 28";
+    const email = contact?.email || "info@neymantech.com";
 
     return (
         <>
@@ -101,7 +101,7 @@ const Header: React.FC<HeaderProps> = ({ contact, socials, locale }) => {
 
                                 <MotionLink
                                     href={`mailto:${email}`}
-                                    className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"
+                                    className="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors"
                                     aria-label="Email Us"
                                 >
                                     <FaEnvelope className="text-blue-600" />
@@ -128,28 +128,34 @@ const Header: React.FC<HeaderProps> = ({ contact, socials, locale }) => {
 
                 {/* Main Nav */}
                 <div className="container">
-                    <div className="flex items-center justify-between py-3">
-                        <Logo />
-                        <nav className="hidden lg:flex items-center gap-8">
+                    <div className="flex items-center justify-between py-4">
+                        {/* Logo - Left */}
+                        <div className="lg:w-1/4 flex justify-start">
+                            <Logo />
+                        </div>
+
+                        {/* Nav Links - Center */}
+                        <nav className="hidden lg:flex items-center justify-center gap-8 lg:w-2/4">
                             {navLinks.map((link: NavLink) => (
                                 <Link
                                     key={link.name}
                                     href={`/${locale}${link.href}`}
-                                    className="text-gray-800 hover:text-blue-600 font-semibold text-[13px] capitalize tracking-wider transition-colors"
+                                    className="text-slate-800 hover:text-blue-600 font-semibold text-[15px] capitalize tracking-wide transition-colors"
                                 >
                                     {link.name}
                                 </Link>
                             ))}
                         </nav>
 
-                        <div className="hidden lg:block">
+                        {/* CTA - Right */}
+                        <div className="hidden lg:flex justify-end lg:w-1/4">
                             <MotionLink
-                                href={`/${locale}/crm`}
-                                className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-lg font-bold text-xs capitalize tracking-widest hover:bg-blue-700 shadow-lg shadow-blue-200"
+                                href={`/${locale}/contact`}
+                                className="flex items-center gap-2 bg-blue-600 text-white px-7 py-3 rounded-xl font-bold text-[14px] capitalize tracking-wide hover:bg-blue-700 shadow-lg shadow-blue-600/20"
                                 whileHover={{ scale: 1.03 }}
                                 whileTap={{ scale: 0.97 }}
                             >
-                                CRM Demo
+                                Layihəni Müzakirə Edək
                                 <FaArrowRight />
                             </MotionLink>
                         </div>

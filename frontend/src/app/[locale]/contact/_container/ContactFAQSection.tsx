@@ -59,13 +59,13 @@ export default function ContactFAQSection({ faqs, locale }: ContactFAQSectionPro
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-white rounded-2xl border border-gray-200 overflow-hidden"
+                            className="bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-lg hover:shadow-blue-900/5 overflow-hidden transition-all duration-300"
                         >
                             <button
                                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                                className="w-full cursor-pointer flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+                                className="w-full cursor-pointer flex items-center justify-between p-6 lg:p-8 text-left hover:bg-slate-50 transition-colors"
                             >
-                                <span className="font-semibold text-gray-900 pr-4">
+                                <span className="font-bold text-lg text-gray-900 pr-4">
                                     {getTranslated(faq, 'question', locale)}
                                 </span>
                                 <motion.div
@@ -86,7 +86,7 @@ export default function ContactFAQSection({ faqs, locale }: ContactFAQSectionPro
                                         className="overflow-hidden"
                                     >
                                         <div
-                                            className="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4"
+                                            className="px-6 lg:px-8 pb-8 text-gray-600 leading-relaxed pt-2"
                                             dangerouslySetInnerHTML={{ __html: getTranslated(faq, 'answer', locale) }}
                                         />
                                     </motion.div>

@@ -17,7 +17,7 @@ export const ServiceCard = ({
     return (
         <Link
             href={`/${locale}/services/${slug}`}
-            className="group block p-8 bg-white rounded-2xl border border-slate-200 hover:border-blue-300 transition-all duration-300 hover:shadow-lg hover:shadow-slate-200/50 hover:-translate-y-1"
+            className="group flex flex-col justify-between h-full p-8 bg-white rounded-3xl border border-slate-100 hover:border-transparent hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-2 transition-all duration-300"
         >
             {/* Header with arrow */}
             <div className="flex items-start justify-between mb-4">

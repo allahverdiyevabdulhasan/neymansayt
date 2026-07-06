@@ -2,8 +2,8 @@ import PageHero from "@/ui/NavigationBar";
 import React, { Suspense } from "react";
 import ContactInfo from "@/app/[locale]/contact/_container/ContactInfo";
 import ContactForm from "@/app/[locale]/contact/_container/ContactForm";
-import MyMapContainer from "@/app/[locale]/contact/_container/ContactMap";
 import ContactFAQSection from "@/app/[locale]/contact/_container/ContactFAQSection";
+import GlobalReach from "@/app/[locale]/contact/_container/GlobalReach";
 import { fetchData, getTranslated } from "@/lib/api";
 
 export default async function ContactPage({ params: { locale } }: { params: { locale: string } }) {
@@ -38,9 +38,9 @@ export default async function ContactPage({ params: { locale } }: { params: { lo
                     </div>
                 </div>
             </section>
-            <Suspense fallback={null}>
-                <MyMapContainer lng={info.lng || "49.9349841"} lat={info.lat || "40.417211"} adress={getTranslated(info, 'address', locale) || "Baku,Azerbaycan"} />
-            </Suspense>
+            
+            <GlobalReach locale={locale} />
+
             <ContactFAQSection faqs={faqs} locale={locale} />
         </>
     );

@@ -44,15 +44,15 @@ const ProjectTracking: React.FC<{ locale: string }> = ({ locale }) => {
     };
 
     return (
-        <section className="py-20 bg-slate-50 overflow-hidden">
+        <section className="py-24 bg-slate-50 overflow-hidden border-y border-slate-100">
             <div className="container">
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-5xl mx-auto">
                     {/* Header */}
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl lg:text-5xl font-black text-slate-900 mb-6 tracking-tight">
                             Layihənizi <span className="text-blue-600">İzləyin</span>
                         </h2>
-                        <p className="text-gray-600">
+                        <p className="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">
                             Sizə təqdim olunan xüsusi kodla layihənizin hansı mərhələdə olduğunu anlıq görün.
                         </p>
                     </div>

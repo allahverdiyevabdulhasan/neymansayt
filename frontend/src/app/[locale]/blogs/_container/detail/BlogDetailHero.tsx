@@ -54,19 +54,22 @@ export const BlogDetailHero = ({
                 </div>
                 <BlogShareButtons title={title} />
 
-                <div className="relative aspect-[21/9] lg:aspect-[21/8] rounded-2xl overflow-hidden mt-8 bg-slate-100">
+                <div className="relative aspect-[21/9] lg:aspect-[21/8] rounded-[2.5rem] overflow-hidden mt-12 bg-slate-100 shadow-2xl shadow-blue-900/10 border border-slate-100">
                     {coverImage ? (
-                        <CustomImage
-                            src={coverImage}
-                            title={title}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 100vw, 100vw"
-                        />
+                        <>
+                            <CustomImage
+                                src={coverImage}
+                                title={title}
+                                fill
+                                className="object-cover"
+                                sizes="(max-width: 768px) 100vw, 100vw"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
+                        </>
                     ) : (
                         <div
                             className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50">
-                            <span className="text-6xl text-blue-300">Neyman</span>
+                            <span className="text-6xl text-blue-300 font-black">Neyman</span>
                         </div>
                     )}
                 </div>

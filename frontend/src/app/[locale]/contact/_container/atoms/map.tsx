@@ -106,9 +106,8 @@ export default function MyMap({ lat, adress, lng }: MapProps) {
                 onError={(e) => console.error("Yandex Maps yüklənmədi:", e)}
             />
 
-            {/* Map Container - Full Height */}
             <div
-                className="relative w-full h-full min-h-[400px] lg:min-h-[500px] rounded-2xl overflow-hidden bg-gray-100 shadow-sm border border-gray-200">
+                className="relative w-full h-full min-h-[400px] lg:min-h-[500px] rounded-[2.5rem] overflow-hidden bg-slate-100 shadow-2xl shadow-blue-900/10 border border-slate-200">
                 <div ref={mapRef} className="w-full h-full min-h-[400px]">
                     {/* Loading State */}
                     {!isScriptLoaded && (

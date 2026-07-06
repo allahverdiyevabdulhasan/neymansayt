@@ -38,12 +38,12 @@ export default function LargeNewsCard({ item, locale }: { item: any, locale: str
         >
             <Link href={blogLink} className="block h-full">
                 {/* Image */}
-                <div className="relative aspect-16/10 overflow-hidden rounded-lg mb-4">
+                <div className="relative aspect-[16/10] overflow-hidden rounded-2xl mb-5 shadow-sm">
                     <CustomImage
                         src={image}
                         title={title}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, 50vw"
                     />
                 </div>
@@ -63,17 +63,17 @@ export default function LargeNewsCard({ item, locale }: { item: any, locale: str
                 </div>
 
                 {/* Content */}
-                <h2 className="text-xxl  font-bold text-gray-900 mb-3 group-hover:text-[#2563eb] transition-colors leading-tight">
+                <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors leading-snug line-clamp-2">
                     {title}
                 </h2>
 
-                <p className="text-gray-600 mb-4 line-clamp-3">
+                <p className="text-slate-500 mb-5 line-clamp-3 text-sm leading-relaxed">
                     {description}
                 </p>
 
                 {/* Link */}
                 <span
-                    className="inline-flex items-center gap-1 text-[#2563eb] font-medium group-hover:gap-2 transition-all">
+                    className="inline-flex items-center gap-2 text-blue-600 font-bold text-sm group-hover:gap-3 transition-all">
                     {locale === 'az' ? 'Daha çox oxu' : locale === 'ru' ? 'Читать далее' : 'Read more'}
                     <IoArrowForward size={16} />
                 </span>

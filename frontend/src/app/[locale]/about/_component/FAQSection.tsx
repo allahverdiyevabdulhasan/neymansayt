@@ -48,16 +48,16 @@ const AccordionItem: React.FC<{ question: string; answer: string }> = ({ questio
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-lg">
+        <div className="bg-white rounded-3xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-gray-900/5 hover:border-blue-100">
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none"
             >
-                <span className="text-lg font-bold text-gray-900">{question}</span>
+                <span className="text-[17px] font-bold text-gray-900 pr-4">{question}</span>
                 <motion.span
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
-                    className="text-blue-600"
+                    className="text-blue-600 shrink-0"
                 >
                     <FiChevronDown size={24} />
                 </motion.span>

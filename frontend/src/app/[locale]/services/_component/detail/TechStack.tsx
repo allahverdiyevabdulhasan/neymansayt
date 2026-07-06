@@ -75,9 +75,9 @@ export const TechStack = ({ techStack }: TechStackProps) => {
                         return (
                             <div
                                 key={index}
-                                className="group flex items-center gap-2 px-5 py-3 bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-700 font-medium rounded-full border border-slate-200 hover:border-blue-200 transition-all duration-300 cursor-default"
+                                className="group flex items-center gap-3 px-6 py-3.5 bg-white shadow-sm hover:shadow-xl hover:shadow-blue-900/5 text-slate-700 hover:text-blue-700 font-bold rounded-2xl border border-slate-100 hover:border-blue-200 transition-all duration-300 cursor-default hover:-translate-y-1"
                             >
-                                <Icon className={`w-5 h-5 ${tech.color} group-hover:scale-110 transition-transform`} />
+                                <Icon className={`w-6 h-6 ${tech.color} group-hover:scale-110 transition-transform`} />
                                 <span>{name.trim()}</span>
                             </div>
                         );

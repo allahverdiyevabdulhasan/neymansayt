@@ -131,12 +131,12 @@ const PartnersSection: React.FC<PartnersSectionProps> = ({ partners, locale }) =
                     loop={true}
                     breakpoints={{
                         320: { slidesPerView: 1.2, spaceBetween: 16 },
-                        640: { slidesPerView: 2.2, spaceBetween: 20 },
-                        1024: { slidesPerView: 3, spaceBetween: 24 },
-                        1280: { slidesPerView: 3.5, spaceBetween: 24 },
+                        640: { slidesPerView: 2.2, spaceBetween: 24 },
+                        1024: { slidesPerView: 3, spaceBetween: 32 },
+                        1280: { slidesPerView: 4, spaceBetween: 32 },
                     }}
                     items={partners}
-                    slideClassName="!h-auto"
+                    slideClassName="!h-auto transition-transform hover:-translate-y-1"
                     renderItem={(partner) => <PartnerCard partner={partner} />}
                 />
             </div>

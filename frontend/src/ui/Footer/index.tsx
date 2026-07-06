@@ -37,15 +37,16 @@ const Footer: React.FC<FooterProps> = ({ contact, socials, locale }) => {
     const footerLinks = {
         services: [
             { name: "Web İnkişaf", href: `/${locale}/services` },
+            { name: "SaaS Modelləri", href: `/${locale}/services` },
             { name: "Mobil Tətbiqlər", href: `/${locale}/services` },
-            { name: "UX/UI Dizayn", href: `/${locale}/services` },
-            { name: "CRM Sistemləri", href: `/${locale}/crm` },
-            { name: "Texniki Dəstək", href: `/${locale}/contact` },
+            { name: "CRM Sistemləri", href: `/${locale}/services` },
+            { name: "SEO və Dəstək", href: `/${locale}/services` },
         ],
         company: [
             { name: "Haqqımızda", href: `/${locale}/about` },
-            { name: "Layihələr", href: `/${locale}/projects` },
-            { name: "Bloqlar", href: `/${locale}/blogs` },
+            { name: "Məhsullar", href: `/${locale}/products` },
+            { name: "İşlərimiz", href: `/${locale}/projects` },
+            { name: "Bloq", href: `/${locale}/blogs` },
             { name: "Əlaqə", href: `/${locale}/contact` },
         ],
     };
@@ -65,15 +66,15 @@ const Footer: React.FC<FooterProps> = ({ contact, socials, locale }) => {
         label: s.platform
     })) : [];
 
-    const tel = contact?.phone || "+994 50 123 45 67";
-    const email = contact?.email || "info@neyman.az";
+    const tel = contact?.phone || "+90 552 153 23 28";
+    const email = contact?.email || "info@neymantech.com";
     const address = getTranslated(contact, 'address', locale) || "Bakı, Azərbaycan";
 
     return (
         <footer className="relative bg-white text-gray-900 border-t border-gray-100 overflow-hidden">
             {/* Background Subtle Glows */}
             <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-50/60 blur-[120px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-50/60 blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-50/40 blur-[120px] rounded-full pointer-events-none" />
 
             {/* Main Footer */}
             <div className="relative z-10 container py-16 lg:py-20">
@@ -81,7 +82,7 @@ const Footer: React.FC<FooterProps> = ({ contact, socials, locale }) => {
 
                     {/* Brand Column */}
                     <div className="lg:col-span-4 space-y-6">
-                        <div className="bg-white/80 backdrop-blur-md p-4 rounded-2xl inline-block border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                        <div className="mb-4">
                             <Logo />
                         </div>
                         <p className="text-gray-600 text-sm leading-relaxed max-w-sm">
@@ -142,16 +143,16 @@ const Footer: React.FC<FooterProps> = ({ contact, socials, locale }) => {
                     <div className="lg:col-span-2">
                         <h4 className="font-bold text-gray-900 mb-6 text-sm uppercase tracking-widest relative inline-block">
                             Şirkət
-                            <span className="absolute -bottom-2 left-0 w-1/2 h-[3px] bg-purple-600 rounded-full"></span>
+                            <span className="absolute -bottom-2 left-0 w-1/2 h-[3px] bg-blue-600 rounded-full"></span>
                         </h4>
                         <ul className="space-y-4">
                             {footerLinks.company.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         href={link.href}
-                                        className="text-gray-600 hover:text-purple-600 transition-colors text-sm flex items-center gap-3 group font-medium"
+                                        className="text-gray-600 hover:text-blue-600 transition-colors text-sm flex items-center gap-3 group font-medium"
                                     >
-                                        <span className="w-0 h-[2px] bg-purple-600 group-hover:w-4 transition-all duration-300 ease-out" />
+                                        <span className="w-0 h-[2px] bg-blue-600 group-hover:w-4 transition-all duration-300 ease-out" />
                                         <span className="group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
                                     </Link>
                                 </li>
@@ -180,7 +181,7 @@ const Footer: React.FC<FooterProps> = ({ contact, socials, locale }) => {
                                 </div>
                                 <button
                                     type="submit"
-                                    className="w-full px-5 py-3.5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-sm font-semibold rounded-xl transition-all shadow-[0_4px_14px_0_rgba(37,99,235,0.2)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.3)] hover:-translate-y-0.5 flex items-center justify-center gap-2 group"
+                                    className="w-full px-5 py-3.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl transition-all shadow-[0_4px_14px_0_rgba(37,99,235,0.2)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.3)] hover:-translate-y-0.5 flex items-center justify-center gap-2 group"
                                 >
                                     Abunə Ol
                                     <IoArrowForward size={18} className="group-hover:translate-x-1 transition-transform" />

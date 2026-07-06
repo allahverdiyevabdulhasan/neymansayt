@@ -46,10 +46,10 @@ const PortfolioSection: React.FC<PortfolioProps> = ({ projects, locale }) => {
                         transition={{ duration: 0.5 }}
                     >
                         <span
-                            className="inline-block px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold uppercase tracking-widest mb-4">
+                            className="inline-block px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-[11px] font-bold uppercase tracking-widest mb-4">
                             Lahiyələrimiz
                         </span>
-                        <h2 className="text-3xl sm:text-4xl font-black text-gray-900 leading-tight">
+                        <h2 className="text-3xl sm:text-5xl font-black text-gray-900 leading-tight tracking-tight">
                             Son <span className="text-blue-600">Layihələrimiz</span>
                         </h2>
                     </MotionDiv>
@@ -105,11 +105,11 @@ const PortfolioSection: React.FC<PortfolioProps> = ({ projects, locale }) => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
-                    className="text-center mt-20"
+                    className="text-center mt-16"
                 >
                     <Link
                         href={`/${locale}/projects`}
-                        className="inline-flex items-center gap-3 px-10 py-4 bg-blue-600 text-white font-bold rounded-2xl hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/25 group cursor-pointer active:scale-95"
+                        className="inline-flex items-center gap-3 px-10 py-4 bg-gray-900 hover:bg-blue-600 text-white font-bold rounded-2xl transition-all duration-300 shadow-xl shadow-gray-900/10 hover:shadow-blue-600/25 group cursor-pointer active:scale-95 text-[15px]"
                     >
                         Bütün Layihələri Gör
                         <IoArrowForward className="group-hover:translate-x-1 transition-transform" size={20} />
@@ -129,7 +129,7 @@ const PortfolioSection: React.FC<PortfolioProps> = ({ projects, locale }) => {
 
                 @media (min-width: 1024px) {
                     .portfolio-swiper-wrapper .swiper-slide {
-                        width: 340px;
+                        width: 380px;
                     }
                 }
 

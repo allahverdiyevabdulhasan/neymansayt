@@ -53,8 +53,8 @@ const AdvantagesSection: React.FC<AdvantagesSectionProps> = ({ advantages, local
           </p>
         </MotionDiv>
 
-        {/* Grid - Alternating Layout */}
-        <div className="grid md:grid-cols-2 gap-px bg-gray-200 rounded-2xl overflow-hidden">
+        {/* Grid - Refined Layout */}
+        <div className="grid md:grid-cols-2 gap-6">
           {displayAdvantages.map((item, index) => (
             <MotionDiv
               key={item.id || index}
@@ -62,14 +62,16 @@ const AdvantagesSection: React.FC<AdvantagesSectionProps> = ({ advantages, local
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className={`group py-8 px-2 lg:p-10 bg-white hover:bg-gray-50 transition-colors duration-300 ${index === displayAdvantages.length - 1 && displayAdvantages.length % 2 !== 0
+              className={`group relative p-8 lg:p-12 bg-white rounded-3xl border border-slate-100 hover:border-transparent hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-500 overflow-hidden ${index === displayAdvantages.length - 1 && displayAdvantages.length % 2 !== 0
                 ? "md:col-span-2"
                 : ""
                 }`}
             >
-              <div className="flex items-start gap-6">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-[50px] -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              
+              <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-6">
                 {/* Number */}
-                <span className="text-4xl lg:text-5xl font-bold text-gray-200 group-hover:text-[#2563eb] transition-colors duration-300">
+                <span className="text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-br from-slate-200 to-slate-100 group-hover:from-blue-600 group-hover:to-indigo-400 transition-all duration-500">
                   {String(index + 1).padStart(2, '0')}
                 </span>
 

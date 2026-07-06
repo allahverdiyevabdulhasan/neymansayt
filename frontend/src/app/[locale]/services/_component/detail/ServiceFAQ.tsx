@@ -40,9 +40,9 @@ export const ServiceFAQ = ({ faqs, locale }: ServiceFAQProps) => {
                     {displayFaqs.map((item, index) => (
                         <div
                             key={item.id || index}
-                            className={`border rounded-2xl overflow-hidden transition-all duration-300 ${openIndex === index
-                                    ? 'border-blue-200 bg-blue-50/30 shadow-sm'
-                                    : 'border-slate-200 hover:border-blue-200'
+                            className={`border rounded-3xl overflow-hidden transition-all duration-300 ${openIndex === index
+                                    ? 'border-blue-200 bg-blue-50/50 shadow-md shadow-blue-900/5'
+                                    : 'border-slate-200 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-900/5'
                                 }`}
                         >
                             <button
@@ -65,10 +65,10 @@ export const ServiceFAQ = ({ faqs, locale }: ServiceFAQProps) => {
                             </button>
 
                             <div
-                                className={`overflow-hidden transition-all duration-300 ${openIndex === index ? 'max-h-96' : 'max-h-0'
+                                className={`overflow-hidden transition-all duration-500 ease-in-out ${openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                                     }`}
                             >
-                                <div className="p-6  text-slate-600 leading-relaxed bg-white">
+                                <div className="p-6 md:p-8 pt-0 text-slate-600 leading-relaxed bg-transparent">
                                     {getTranslated(item, 'answer', locale)}
                                 </div>
                             </div>
