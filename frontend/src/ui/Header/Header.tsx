@@ -15,6 +15,7 @@ import { HiMenuAlt3, HiX } from "react-icons/hi";
 import Logo from "@/globalComponent/Logo";
 import { MotionDiv, MotionHeader, MotionLink } from "@/lib/motion";
 import Link from "next/link";
+import LanguageSwitcher from "./LanguageSwitcher";
 import MobileSidebar from "@/ui/Sidebar";
 import { navLinks } from "@/data/constant";
 import { NavLink } from "@/data/interface";
@@ -27,12 +28,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ contact, socials, locale }) => {
-    const pathname = usePathname();
-    const isPresentation = pathname?.endsWith("/educrm") || pathname?.endsWith("/qrmenu") || pathname?.includes("/educrm/") || pathname?.includes("/qrmenu/");
-    
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    
-    if (isPresentation) return null;
 
     const { scrollY } = useScroll();
     const headerTopHeight = useTransform(scrollY, [0, 100], [40, 0]);
@@ -147,8 +143,9 @@ const Header: React.FC<HeaderProps> = ({ contact, socials, locale }) => {
                             ))}
                         </nav>
 
-                        {/* CTA - Right */}
-                        <div className="hidden lg:flex justify-end lg:w-1/4">
+                        {/* CTA & Language - Right */}
+                        <div className="hidden lg:flex items-center justify-end lg:w-1/4 gap-4">
+                            <LanguageSwitcher currentLocale={locale} />
                             <MotionLink
                                 href={`/${locale}/contact`}
                                 className="flex items-center gap-2 bg-blue-600 text-white px-7 py-3 rounded-xl font-bold text-[14px] capitalize tracking-wide hover:bg-blue-700 shadow-lg shadow-blue-600/20"

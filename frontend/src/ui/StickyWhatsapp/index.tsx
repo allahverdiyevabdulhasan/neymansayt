@@ -12,15 +12,8 @@ import {
 import { usePathname } from 'next/navigation';
 
 const WhatsAppWidget: React.FC<{ phone?: string }> = ({ phone }) => {
-    const pathname = usePathname();
-    const isPresentation = pathname?.endsWith("/educrm") || pathname?.endsWith("/qrmenu") || pathname?.includes("/educrm/") || pathname?.includes("/qrmenu/");
-    
     const [isOpen, setIsOpen] = useState(false);
     const [hasNewMessage, setHasNewMessage] = useState(true);
-    
-    if (isPresentation) return null;
-
-
     const whatsappNumber = phone ? phone.replace(/\s/g, '').replace('+', '') : "994501234567";
     const whatsappLink = `https://wa.me/${whatsappNumber}`;
 

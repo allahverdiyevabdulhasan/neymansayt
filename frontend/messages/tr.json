@@ -1,0 +1,110 @@
+{
+  "notfound": {
+    "title": "Aradığınız Sayfa Bulunamadı",
+    "description": "Aradığınız sayfa mevcut değil veya silinmiş. Lütfen sayfayı tekrar kontrol edin veya ana sayfaya dönün.",
+    "button": "Geri dön"
+  },
+  "noResult": {
+    "title": "Aramanıza uygun sonuç bulunamadı",
+    "description": "Aradığınız bilgi bulunamadı. Lütfen farklı bir arama ile tekrar deneyin!"
+  },
+  "noResultComponent": {
+    "title": "Bilgi bulunamadı",
+    "description": "Burada henüz hiçbir bilgi mevcut değil. Yakında güncellenecek!",
+    "btn": "Ana sayfaya dön"
+  },
+  "Contact": {
+    "meta": {
+      "title": "İletişim | Şirket Adı",
+      "description": "Bizimle iletişime geçin"
+    },
+    "info": {
+      "title": "Bizimle İletişime Geçin",
+      "description": "Aşağıdaki yöntemlerle bizimle iletişime geçebilirsiniz",
+      "address": {
+        "title": "Adres",
+        "content": "Bakü, Azerbaycan",
+        "subContent": "Nizami ilçesi, Ahmet Recebli sok. 1"
+      },
+      "phone": {
+        "title": "Telefon",
+        "content": "+994 50 123 45 67",
+        "subContent": "Hafta içi 09:00 - 18:00"
+      },
+      "email": {
+        "title": "E-posta",
+        "content": "info@company.az",
+        "subContent": "24 saat içinde yanıt"
+      },
+      "hours": {
+        "title": "Çalışma saatleri",
+        "content": "Pzt - Cum 09:00 - 18:00",
+        "subContent": "Cumartesi ve Pazar - kapalı"
+      }
+    },
+    "social": {
+      "title": "Bizi takip edin"
+    },
+    "form": {
+      "title": "Mesaj Gönderin",
+      "subtitle": "Formu doldurun, sizinle iletişime geçeceğiz",
+      "fields": {
+        "name": {
+          "label": "Ad Soyad",
+          "placeholder": "Adınız ve soyadınız"
+        },
+        "email": {
+          "label": "E-posta adresi",
+          "placeholder": "email@example.com"
+        },
+        "phone": {
+          "label": "Telefon numarası",
+          "placeholder": "+994 50 123 45 67"
+        },
+        "subject": {
+          "label": "Konu",
+          "placeholder": "Mesajınızın konusu"
+        },
+        "message": {
+          "label": "Mesajınız",
+          "placeholder": "Mesajınızı buraya yazın..."
+        }
+      },
+      "privacy": {
+        "text": "Verilerin işlenmesini kabul ediyorum",
+        "link": "Gizlilik politikası"
+      },
+      "submit": "Mesaj Gönder",
+      "submitting": "Gönderiliyor...",
+      "success": {
+        "title": "Teşekkür ederiz!",
+        "message": "Mesajınız başarıyla gönderildi. En kısa sürede sizinle iletişime geçeceğiz.",
+        "newMessage": "Yeni mesaj yaz"
+      },
+      "error": "Bir hata oluştu. Lütfen tekrar deneyin."
+    },
+    "validation": {
+      "name": {
+        "min": "Ad soyad en az 2 karakter olmalıdır",
+        "max": "Ad soyad en fazla 50 karakter olabilir"
+      },
+      "email": {
+        "invalid": "Geçerli bir e-posta adresi girin"
+      },
+      "phone": {
+        "invalid": "Geçerli bir telefon numarası girin"
+      },
+      "subject": {
+        "min": "Konu en az 5 karakter olmalıdır",
+        "max": "Konu en fazla 100 karakter olabilir"
+      },
+      "message": {
+        "min": "Mesaj en az 10 karakter olmalıdır",
+        "max": "Mesaj en fazla 1000 karakter olabilir"
+      },
+      "privacy": {
+        "required": "Gizlilik politikasını kabul etmelisiniz"
+      }
+    }
+  }
+}

@@ -31,6 +31,33 @@ export default function proxy(req: NextRequest) {
     return response;
   }
 
+  // Geolocation detection to set default locale
+  const hasLocaleCookie = req.cookies.has('NEXT_LOCALE');
+  
+  if (!hasLocaleCookie && pathname === '/') {
+      let country = req.headers.get('x-vercel-ip-country') || req.headers.get('cf-ipcountry');
+      let localeToSet = routing.defaultLocale;
+      
+      if (country) {
+          if (country === 'TR') localeToSet = 'tr';
+          else if (country === 'AZ') localeToSet = 'az';
+          else if (['RU', 'BY', 'KZ', 'UZ', 'KG'].includes(country)) localeToSet = 'ru';
+          else if (['US', 'GB', 'CA', 'AU'].includes(country)) localeToSet = 'en';
+      } else {
+          const acceptLanguage = req.headers.get('accept-language');
+          if (acceptLanguage) {
+              if (acceptLanguage.includes('tr')) localeToSet = 'tr';
+              else if (acceptLanguage.includes('az')) localeToSet = 'az';
+              else if (acceptLanguage.includes('ru')) localeToSet = 'ru';
+              else if (acceptLanguage.includes('en')) localeToSet = 'en';
+          }
+      }
+
+      if (localeToSet !== routing.defaultLocale) {
+           req.headers.set('accept-language', localeToSet);
+      }
+  }
+
   const response = i18nMiddleware(req);
   response.headers.set("x-pathname", pathname);
 

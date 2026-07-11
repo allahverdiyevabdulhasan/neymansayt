@@ -85,18 +85,18 @@ const services = [
 
 export const QuickNavSection = () => {
     return (
-        <section className="py-24 bg-[#0A0F1C] relative overflow-hidden">
+        <section className="py-24 bg-slate-50 relative overflow-hidden border-t border-b border-blue-50/50">
             {/* Background Glows */}
-            <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-600/20 blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100/40 blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-100/40 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="container relative z-10">
                 <div className="text-center max-w-3xl mx-auto mb-16">
-                    <span className="text-blue-500 font-bold uppercase tracking-wider text-sm mb-4 block">Xidmətlərimiz</span>
-                    <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
-                        Sizin Üçün <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Nə Edirik?</span>
+                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-blue-100 text-blue-600 text-sm font-bold tracking-wide uppercase shadow-sm mb-6">Xidmətlərimiz</span>
+                    <h2 className="text-4xl md:text-5xl font-black text-blue-950 mb-6 tracking-tight">
+                        Sizin Üçün <span className="text-blue-600">Nə Edirik?</span>
                     </h2>
-                    <p className="text-slate-400 text-lg leading-relaxed">
+                    <p className="text-slate-600 text-lg font-medium leading-relaxed">
                         Biznesinizi rəqəmsal dünyada inkişaf etdirmək üçün ehtiyacınız olan bütün texnoloji həllər bir ünvanda.
                     </p>
                 </div>
@@ -109,23 +109,27 @@ export const QuickNavSection = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: index * 0.05 }}
-                            className="bg-white/5 border border-white/10 backdrop-blur-md p-8 rounded-3xl hover:bg-white/10 transition-colors group flex flex-col h-full"
+                            className="bg-white border border-blue-50/50 p-8 rounded-3xl hover:border-blue-200 transition-all duration-300 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(37,99,235,0.1)] group flex flex-col h-full relative overflow-hidden"
                         >
-                            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${item.iconBg} ${item.iconColor} group-hover:scale-110 transition-transform duration-300`}>
-                                {item.icon}
+                            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                            
+                            <div className="relative z-10 flex flex-col h-full">
+                                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-blue-50 text-blue-600 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm`}>
+                                    {item.icon}
+                                </div>
+                                <h3 className="text-xl font-black text-blue-950 mb-4 group-hover:text-blue-700 transition-colors">{item.title}</h3>
+                                <ul className="space-y-3 mb-8 flex-1">
+                                    {item.features.map((feature, i) => (
+                                        <li key={i} className="flex items-start gap-3 text-slate-600 text-sm font-medium">
+                                            <FaCircleCheck className={`text-blue-500 mt-0.5 shrink-0`} size={16} />
+                                            <span>{feature}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <Link href={`/services`} className="inline-flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700 transition-colors mt-auto">
+                                    Ətraflı <IoArrowForward className="group-hover:translate-x-1 transition-transform" />
+                                </Link>
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-4">{item.title}</h3>
-                            <ul className="space-y-3 mb-8 flex-1">
-                                {item.features.map((feature, i) => (
-                                    <li key={i} className="flex items-start gap-3 text-slate-300 text-sm">
-                                        <FaCircleCheck className={`${item.iconColor} mt-0.5 shrink-0`} size={16} />
-                                        <span>{feature}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                            <Link href={`/services`} className="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-blue-400 transition-colors mt-auto">
-                                Ətraflı <IoArrowForward />
-                            </Link>
                         </MotionDiv>
                     ))}
                 </div>
