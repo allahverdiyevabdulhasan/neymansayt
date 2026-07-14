@@ -34,11 +34,11 @@ export default function LargeNewsCard({ item, locale }: { item: any, locale: str
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="group h-full"
+            className="group h-full flex flex-col bg-white rounded-[2.5rem] p-5 lg:p-6 border border-blue-50/50 shadow-[0_20px_50px_rgba(37,99,235,0.04)] hover:shadow-[0_20px_50px_rgba(37,99,235,0.08)] hover:-translate-y-1 transition-all duration-500"
         >
-            <Link href={blogLink} className="block h-full">
+            <Link href={blogLink} className="block h-full flex flex-col">
                 {/* Image */}
-                <div className="relative aspect-[16/10] overflow-hidden rounded-2xl mb-5 shadow-sm">
+                <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] mb-6 shadow-sm">
                     <CustomImage
                         src={image}
                         title={title}
@@ -49,34 +49,38 @@ export default function LargeNewsCard({ item, locale }: { item: any, locale: str
                 </div>
 
                 {/* Meta */}
-                <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-2 text-gray-500 text-sm">
-                        <IoCalendarOutline size={16} />
+                <div className="flex items-center justify-between mb-4 px-2">
+                    <div className="flex items-center gap-2 text-slate-500 text-[13px] font-medium">
+                        <IoCalendarOutline size={16} className="text-blue-600" />
                         {dateFormatted}
                     </div>
                     {categoryValue && (
                         <span
-                            className={`px-3 py-1 rounded text-xs font-medium ${categoryColors[categoryValue] || "bg-gray-100 text-gray-700"}`}>
+                            className={`px-3 py-1.5 rounded-xl text-xs font-bold tracking-wide uppercase ${categoryColors[categoryValue] || "bg-blue-50 text-blue-600"}`}>
                             {categoryValue}
                         </span>
                     )}
                 </div>
 
                 {/* Content */}
-                <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors leading-snug line-clamp-2">
-                    {title}
-                </h2>
+                <div className="px-2 flex flex-col flex-grow">
+                    <h2 className="text-2xl font-black text-blue-950 mb-4 group-hover:text-blue-600 transition-colors leading-snug line-clamp-2">
+                        {title}
+                    </h2>
 
-                <p className="text-slate-500 mb-5 line-clamp-3 text-sm leading-relaxed">
-                    {description}
-                </p>
+                    <p className="text-slate-500 mb-6 line-clamp-3 text-[15px] leading-relaxed flex-grow">
+                        {description}
+                    </p>
 
-                {/* Link */}
-                <span
-                    className="inline-flex items-center gap-2 text-blue-600 font-bold text-sm group-hover:gap-3 transition-all">
-                    {locale === 'az' ? 'Daha çox oxu' : locale === 'ru' ? 'Читать далее' : 'Read more'}
-                    <IoArrowForward size={16} />
-                </span>
+                    {/* Link */}
+                    <div className="mt-auto">
+                        <span
+                            className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 font-bold text-[15px] group-hover:text-blue-600 transition-all bg-slate-50 hover:bg-blue-50 px-5 py-2.5 rounded-xl border border-slate-100 hover:border-blue-100">
+                            {locale === 'az' ? 'Daha çox oxu' : locale === 'ru' ? 'Читать далее' : 'Read more'}
+                            <IoArrowForward size={18} className="group-hover:translate-x-1.5 transition-transform" />
+                        </span>
+                    </div>
+                </div>
             </Link>
         </MotionArticle>
     );

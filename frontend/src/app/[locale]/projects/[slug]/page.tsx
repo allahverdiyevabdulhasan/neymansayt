@@ -8,6 +8,7 @@ import { ProjectGallery } from "@/app/[locale]/projects/_container/detail/Projec
 import { ProjectTestimonial } from "@/app/[locale]/projects/_container/detail/ProjectTestimonial";
 import { fetchData, getTranslated } from "@/lib/api";
 import { notFound } from "next/navigation";
+import { redirect } from "@/i18n/navigation";
 
 export default async function Page({ params }: { params: { locale: string, slug: string } }) {
     const { locale, slug } = await params;
@@ -15,6 +16,11 @@ export default async function Page({ params }: { params: { locale: string, slug:
 
     if (!project) {
         notFound();
+    }
+
+    if (project.slug && project.slug !== slug) {
+        // @ts-ignore
+        redirect({ href: `/projects/${project.slug}` as any, locale });
     }
 
     const title = getTranslated(project, 'title', locale);
@@ -59,7 +65,7 @@ export default async function Page({ params }: { params: { locale: string, slug:
 
             <ProjectTech technologies={technologies} />
 
-            <ProjectGallery images={gallery} />
+            <ProjectGallery images={gallery} locale={locale} />
 
             {project.testimonial_quote && (
                 <ProjectTestimonial

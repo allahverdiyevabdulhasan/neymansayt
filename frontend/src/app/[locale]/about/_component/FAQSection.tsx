@@ -26,7 +26,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ faqs, locale }) => {
                         FAQ
                     </span>
                     <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mt-4">
-                        Tez-tez verilən suallar
+                        {locale === 'en' ? 'Frequently Asked Questions' : locale === 'ru' ? 'Часто Задаваемые Вопросы' : locale === 'tr' ? 'Sıkça Sorulan Sorular' : 'Tez-tez verilən suallar'}
                     </h2>
                 </div>
 

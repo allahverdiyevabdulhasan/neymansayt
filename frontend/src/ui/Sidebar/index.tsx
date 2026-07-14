@@ -16,6 +16,7 @@ import Logo from "@/globalComponent/Logo";
 import Link from "next/link";
 import {navLinks} from "@/data/constant";
 import {NavLink} from "@/data/interface";
+import { useTranslations } from "next-intl";
 
 interface SocialLink {
     icon: React.ReactNode;
@@ -29,6 +30,8 @@ interface MobileSidebarProps {
 }
 
 const MobileSidebar: React.FC<MobileSidebarProps> = ({isOpen, onClose}) => {
+    const t = useTranslations('Sidebar');
+    const navT = useTranslations('Navigation');
     const [activeLink, setActiveLink] = useState("/");
 
     // Lock body scroll when sidebar is open
@@ -134,7 +137,7 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({isOpen, onClose}) => {
                 <>
                 {/* Overlay */}
                     <motion.div
-                        className="fixed inset-0 bg-black/40 backdrop-blur-sm overflow-hidden z-40 lg:hidden"
+                        className="fixed inset-0 bg-black/40 backdrop-blur-sm overflow-hidden z-[90] lg:hidden"
                         variants={overlayVariants}
                         initial="hidden"
                         animate="visible"
@@ -144,7 +147,7 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({isOpen, onClose}) => {
 
                     {/* Sidebar - Ağ fon */}
                     <motion.div
-                        className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-white z-50 lg:hidden flex flex-col shadow-2xl"
+                        className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-white z-[100] lg:hidden flex flex-col shadow-2xl"
                         variants={sidebarVariants}
                         initial="hidden"
                         animate="visible"
@@ -186,7 +189,7 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({isOpen, onClose}) => {
 
                                     return (
                                         <motion.div
-                                            key={link.name}
+                                            key={link.translationKey}
                                             variants={linkVariants}
                                         >
                                             <Link
@@ -201,7 +204,7 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({isOpen, onClose}) => {
                                                         : "text-gray-700 hover:bg-gray-50 hover:text-blue-600 border border-gray-100"
                                                 }`}
                                             >
-                                                <span className="text-lg font-semibold">{link.name}</span>
+                                                <span className="text-lg font-semibold">{navT(link.translationKey)}</span>
                                                 <motion.span
                                                     className={`w-8 h-8 rounded-full flex items-center justify-center ${
                                                         isActive
@@ -228,10 +231,10 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({isOpen, onClose}) => {
                                         onClick={onClose}
                                         className="group flex items-center justify-between p-4 mt-4 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-600/30 border border-blue-500/30"
                                     >
-                                        <span className="text-lg font-bold">CRM Sistemi</span>
+                                        <span className="text-lg font-bold">{t('crmDemo')}</span>
                                         <div className="flex items-center gap-2">
                                             <span
-                                                className="text-xs bg-white/20 px-2 py-1 rounded-full font-medium">Demo</span>
+                                                className="text-xs bg-white/20 px-2 py-1 rounded-full font-medium">{t('demoLabel')}</span>
                                             <motion.div
                                                 className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"
                                                 animate={{x: [0, 4, 0]}}
@@ -253,37 +256,41 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({isOpen, onClose}) => {
                             animate="visible"
                         >
                             {/* Contact Info */}
-                            <div className="grid grid-cols-2 gap-4 mb-6">
+                            <div className="flex flex-col gap-5 mb-6">
                                 <div>
                                     <p className="text-gray-400 text-xs uppercase tracking-wider mb-2 font-bold">
-                                        Email
+                                        {t('emailLabel')}
                                     </p>
                                     <a
-                                        href="mailto:info@neyman.az"
+                                        href="mailto:info@neymantech.com"
                                         className="text-gray-700 text-sm hover:text-blue-600 transition-colors flex items-center gap-2 font-medium"
                                     >
-                                        <IoMail size={14} className="text-blue-600"/>
-                                        info@neyman.az
+                                        <IoMail size={16} className="text-blue-600 flex-shrink-0"/>
+                                        <span className="break-all">info@neymantech.com</span>
                                     </a>
                                 </div>
                                 <div>
                                     <p className="text-gray-400 text-xs uppercase tracking-wider mb-2 font-bold">
-                                        Telefon
+                                        {t('phoneLabel')}
                                     </p>
-                                    <a
-                                        href="tel:+994501234567"
-                                        className="text-gray-700 text-sm hover:text-blue-600 transition-colors flex items-center gap-2 font-medium"
-                                    >
-                                        <IoCall size={14} className="text-blue-600"/>
-                                        +994 50 123 45 67
-                                    </a>
+                                    <div className="flex items-start gap-2">
+                                        <IoCall size={16} className="text-blue-600 flex-shrink-0 mt-0.5"/>
+                                        <div className="flex flex-col gap-1">
+                                            <a href="tel:+994773312653" className="text-gray-700 text-sm hover:text-blue-600 transition-colors font-medium">
+                                                +994 77 331 26 53
+                                            </a>
+                                            <a href="tel:+905521532328" className="text-gray-700 text-sm hover:text-blue-600 transition-colors font-medium">
+                                                +90 552 153 23 28
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             {/* Social Links */}
                             <div>
                                 <p className="text-gray-400 text-xs uppercase tracking-wider mb-4 font-bold">
-                                    Bizi İzləyin
+                                    {t('followUs')}
                                 </p>
                                 <div className="flex gap-3">
                                     {socialLinks.map((social, index) => (

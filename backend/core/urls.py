@@ -42,10 +42,11 @@ urlpatterns = [
     path('api/services/', include('services.urls')),
     path('api/projects/', include('projects.urls')),
     path('api/blogs/', include('blogs.urls')),
-    path('api/crm/', include('crm.urls')),
+
     path('api/about/', include('about.urls')),
     path('api/contact/', include('contact.urls')),
     path('api/tracking/', include('tracking.urls')),
+    path('api/products/', include('products.urls')),
     
     # Swagger UI URLs
     path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),

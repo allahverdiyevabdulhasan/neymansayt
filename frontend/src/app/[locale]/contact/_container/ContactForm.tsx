@@ -112,13 +112,13 @@ export default function ContactForm() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white rounded-3xl shadow-xl shadow-gray-200/50 p-8 lg:p-10 border border-gray-100"
+            className="bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(37,99,235,0.06)] p-8 lg:p-12 border border-blue-50/50"
         >
-            <div className="mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            <div className="mb-10">
+                <h2 className="text-3xl font-black text-blue-950 mb-3">
                     {t('form.title')}
                 </h2>
-                <p className="text-gray-600">
+                <p className="text-slate-600 text-lg font-medium">
                     {t('form.subtitle')}
                 </p>
             </div>
@@ -217,13 +217,13 @@ export default function ContactForm() {
                         </FormField>
 
                         {/* Privacy Checkbox */}
-                        <div className="flex items-start gap-3">
-                            <div className="relative flex items-center">
+                        <div className="flex items-start gap-3 mt-8">
+                            <div className="relative flex items-center mt-1">
                                 <input
                                     {...register('privacy')}
                                     type="checkbox"
                                     id="privacy"
-                                    className="peer h-5 w-5 cursor-pointer appearance-none rounded border border-gray-300 checked:border-blue-600 checked:bg-blue-600 transition-all"
+                                    className="peer h-5 w-5 cursor-pointer appearance-none rounded border border-slate-300 checked:border-blue-600 checked:bg-blue-600 transition-all focus:ring-2 focus:ring-blue-600/20 focus:outline-none"
                                     disabled={isSubmitting}
                                 />
                                 <FaCheckCircle
@@ -231,16 +231,16 @@ export default function ContactForm() {
                                     size={12}
                                 />
                             </div>
-                            <label htmlFor="privacy" className="text-sm text-gray-600 cursor-pointer select-none">
-                                <FaShieldAlt className="inline mr-1 text-gray-400" size={12} />
+                            <label htmlFor="privacy" className="text-sm font-medium text-slate-600 cursor-pointer select-none">
+                                <FaShieldAlt className="inline mr-1 text-slate-400" size={12} />
                                 {t('form.privacy.text')}{' '}
-                                <a href="/privacy" className="text-blue-600 hover:underline font-medium">
+                                <a href="/privacy" className="text-blue-600 hover:text-blue-700 font-bold transition-colors">
                                     {t('form.privacy.link')}
                                 </a>
                             </label>
                         </div>
                         {errors.privacy && (
-                            <p className="text-sm text-red-500 flex items-center gap-1">
+                            <p className="text-sm text-red-500 font-medium flex items-center gap-1 mt-1">
                                 <FaExclamationCircle size={14} />
                                 {errors.privacy.message}
                             </p>
@@ -251,7 +251,7 @@ export default function ContactForm() {
                             <motion.div
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-center gap-2"
+                                className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 font-medium text-sm flex items-center gap-2 mt-4"
                             >
                                 <FaExclamationCircle size={18} />
                                 {submitError}
@@ -262,7 +262,7 @@ export default function ContactForm() {
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30"
+                            className="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgba(37,99,235,0.25)] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 border border-transparent"
                         >
                             {isSubmitting ? (
                                 <>
@@ -301,15 +301,15 @@ function FormField({
 }) {
     return (
         <div className="space-y-2">
-            <label className="block text-sm font-semibold text-gray-700 flex items-center gap-2">
-                {Icon && <Icon size={16} className="text-gray-400" />}
+            <label className="block text-sm font-bold text-slate-700 flex items-center gap-2">
+                {Icon && <Icon size={16} className="text-slate-400" />}
                 <span>{label}</span>
-                {required && <span className="text-red-500">*</span>}
+                {required && <span className="text-blue-600">*</span>}
             </label>
             {children}
             <div className="flex justify-between items-center min-h-[20px]">
                 {error ? (
-                    <p className="text-sm text-red-500 flex items-center gap-1 animate-pulse">
+                    <p className="text-sm font-medium text-red-500 flex items-center gap-1 animate-pulse">
                         <FaExclamationCircle size={14} />
                         {error}
                     </p>
@@ -317,7 +317,7 @@ function FormField({
                     <span />
                 )}
                 {helperText && (
-                    <span className={`text-xs ${parseInt(helperText) > 900 ? 'text-orange-500' : 'text-gray-400'}`}>
+                    <span className={`text-xs font-semibold ${parseInt(helperText) > 900 ? 'text-orange-500' : 'text-slate-400'}`}>
                         {helperText}
                     </span>
                 )}
@@ -327,12 +327,12 @@ function FormField({
 }
 
 function inputClasses(error?: { message?: string }) {
-    return `w-full px-4 py-3.5 rounded-xl border-2 bg-gray-50/50 transition-all duration-300 outline-none
+    return `w-full px-5 py-4 rounded-2xl border-2 bg-[#FAFAFC] transition-all duration-300 outline-none font-medium
         ${error
-            ? 'border-red-300 focus:border-red-500 focus:bg-red-50/30 bg-red-50/30 focus:ring-4 focus:ring-red-500/20'
-            : 'border-gray-200 focus:border-blue-500 focus:bg-white hover:border-gray-300 focus:ring-4 focus:ring-blue-500/20'
+            ? 'border-red-300 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/20'
+            : 'border-slate-200 focus:border-blue-500 focus:bg-white hover:border-slate-300 focus:ring-4 focus:ring-blue-500/20'
         }
-        placeholder:text-gray-400 text-gray-900 disabled:opacity-60 disabled:cursor-not-allowed`;
+        placeholder:text-slate-400 text-slate-900 disabled:opacity-60 disabled:cursor-not-allowed`;
 }
 
 function SuccessMessage({ t, onReset }: { t: (key: string) => string; onReset: () => void }) {
@@ -341,25 +341,25 @@ function SuccessMessage({ t, onReset }: { t: (key: string) => string; onReset: (
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="text-center py-12"
+            className="text-center py-16"
         >
             <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-                className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
+                className="w-24 h-24 bg-green-50 rounded-[2rem] flex items-center justify-center mx-auto mb-8 border border-green-100 shadow-[0_8px_30px_rgba(34,197,94,0.1)]"
             >
-                <FaCheckCircle size={40} className="text-green-600" />
+                <FaCheckCircle size={48} className="text-green-500" />
             </motion.div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-3">
+            <h3 className="text-3xl font-black text-slate-900 mb-4">
                 {t('form.success.title')}
             </h3>
-            <p className="text-gray-600 mb-8 max-w-md mx-auto">
+            <p className="text-slate-600 text-lg font-medium mb-10 max-w-md mx-auto leading-relaxed">
                 {t('form.success.message')}
             </p>
             <button
                 onClick={onReset}
-                className="text-blue-600 font-semibold hover:text-blue-700 transition-colors inline-flex items-center gap-2"
+                className="text-blue-600 font-bold hover:text-blue-700 transition-colors inline-flex items-center gap-2 bg-blue-50 px-6 py-3 rounded-full hover:bg-blue-100"
             >
                 <FaPaperPlane size={14} />
                 {t('form.success.newMessage')}

@@ -3,7 +3,6 @@ import AboutHero from "./_component/Hero";
 import AdvantagesSection from "./_component/AdvantagesSection";
 import StrategicGoals from "./_component/StrategicGoals";
 import FAQSection from "./_component/FAQSection";
-import ContactCTA from "@/ui/ContactCTA";
 import PartnersSection from "../(home)/_components/PartnersSection";
 import { fetchData, getTranslated } from "@/lib/api";
 
@@ -28,8 +27,15 @@ export default async function AboutPage({ params }: { params: { locale: string }
     since: p.since_year
   })) : [];
 
-  const pageHeroTitle = getTranslated(content, 'hero_title', locale) || "Haqqımızda";
-  const pageHeroSubtitle = getTranslated(content, 'hero_description', locale) || "Neyman Enterprise Technologies olaraq, bizneslərin rəqəmsal transformasiyasında tərəfdaşınızıq.";
+  const pageHeroTitle = locale === 'az' ? 'Haqqımızda' 
+                      : locale === 'ru' ? 'О нас' 
+                      : locale === 'tr' ? 'Hakkımızda' 
+                      : 'About Us';
+
+  const pageHeroSubtitle = locale === 'az' ? 'Neyman Enterprise Technologies olaraq, bizneslərin rəqəmsal transformasiyasında tərəfdaşınızıq.'
+                         : locale === 'ru' ? 'Как Neyman Enterprise Technologies, мы являемся вашим партнером в цифровой трансформации бизнеса.'
+                         : locale === 'tr' ? 'Neyman Enterprise Technologies olarak, işletmelerin dijital dönüşümünde ortağınızız.'
+                         : 'As Neyman Enterprise Technologies, we are your partner in digital business transformation.';
 
   return (
     <>
@@ -45,7 +51,6 @@ export default async function AboutPage({ params }: { params: { locale: string }
       <AdvantagesSection advantages={advantagesData} locale={locale} />
       <FAQSection faqs={faqData} locale={locale} />
       <PartnersSection partners={partners} locale={locale} />
-      <ContactCTA />
     </>
   );
 }

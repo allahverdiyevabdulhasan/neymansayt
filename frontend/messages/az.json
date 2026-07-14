@@ -28,7 +28,7 @@
       },
       "phone": {
         "title": "Telefon",
-        "content": "+994 50 123 45 67",
+        "content": "+994 77 331 26 53 / +90 552 153 23 28",
         "subContent": "Həftə içi 09:00 - 18:00"
       },
       "email": {
@@ -59,7 +59,7 @@
         },
         "phone": {
           "label": "Telefon nömrəsi",
-          "placeholder": "+994 50 123 45 67"
+          "placeholder": "+994 77 331 26 53 / +90 552 153 23 28"
         },
         "subject": {
           "label": "Mövzu",
@@ -106,5 +106,64 @@
         "required": "Məxfilik siyasətini qəbul edin"
       }
     }
+  },
+  "Hero": {
+    "badge": "Premium IT Xidmətləri",
+    "title1": "Biznesinizi",
+    "title2": "gələcəyə",
+    "title3": "kodlayırıq.",
+    "desc": "Startup və korporasiyalar üçün xüsusi proqram təminatı, mobil tətbiq və UI/UX dizayn həlləri. Növbəti səviyyəyə bizimlə keçin.",
+    "servicesBtn": "Xidmətlərlə Tanış Ol",
+    "startupBtn": "Startaplar Üçün Özəl",
+    "stat1": "100+ Uğurlu Layihə",
+    "stat2": "7/24 Dəstək",
+    "partnersTitle": "Əməkdaşlıqlar & Layihələr",
+    "partnersDesc": "Güvəndiyimiz və işlədiyimiz tərəfdaşlar"
+  },
+  "ContactCTA": {
+    "title": "Bizimlə əlaqə saxlayın",
+    "desc": "Layihəniz haqqında danışmaq və ya suallarınız üçün bizə müraciət edin. Sürətli dönüş edəcəyik.",
+    "call": "Zəng edin",
+    "whatsapp": "WhatsApp",
+    "email": "Email göndərin",
+    "callDesc": "Həftə içi 9:00 - 18:00",
+    "whatsappDesc": "Sürətli cavab",
+    "emailDesc": "24 saat ərzində cavab",
+    "fillFormBtn": "Əlaqə formunu doldurun"
+  },
+  "Sidebar": {
+    "crmDemo": "CRM Sistemi",
+    "demoLabel": "Demo",
+    "emailLabel": "Email",
+    "phoneLabel": "Telefon",
+    "followUs": "Bizi İzləyin"
+  },
+  "StickyWhatsapp": {
+    "greeting": "Salam! 👋 Sizə necə kömək edə bilərik? WhatsApp-dan yazın, komandamız sizinlə qısa zamanda əlaqə saxlayacaq.",
+    "btnText": "WhatsApp-da yaz",
+    "ariaLabel": "WhatsApp ilə əlaqə",
+    "support": "Dəstək",
+    "replyTime": "Adətən 2 dəqiqədə cavab",
+    "onlineNow": "İndi onlayn"
+  },
+  "Navigation": {
+    "projects": "İşlərimiz",
+    "services": "Xidmətlərimiz",
+    "products": "Məhsullar",
+    "blogs": "Bloq",
+    "about": "Haqqımızda",
+    "contact": "Əlaqə"
+  },
+  "Footer": {
+    "services": "Xidmətlər",
+    "company": "Şirkət",
+    "webDev": "Web İnkişaf",
+    "saas": "SaaS Modelləri",
+    "mobile": "Mobil Tətbiqlər",
+    "crm": "CRM Sistemləri",
+    "seo": "SEO və Dəstək",
+    "rights": "Bütün hüquqlar qorunur.",
+    "privacy": "Məxfilik Siyasəti",
+    "terms": "İstifadə Şərtləri"
   }
 }

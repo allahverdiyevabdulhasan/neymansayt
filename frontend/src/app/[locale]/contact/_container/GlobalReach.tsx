@@ -10,7 +10,6 @@ interface GlobalReachProps {
 const regions = [
     {
         id: "az",
-        name: "Azərbaycan",
         clients: "100+",
         color: "from-blue-500 to-blue-600",
         bg: "bg-blue-50",
@@ -19,7 +18,6 @@ const regions = [
     },
     {
         id: "tr",
-        name: "Türkiyə",
         clients: "45+",
         color: "from-red-500 to-red-600",
         bg: "bg-red-50",
@@ -28,7 +26,6 @@ const regions = [
     },
     {
         id: "kw",
-        name: "Küveyt",
         clients: "15+",
         color: "from-emerald-500 to-emerald-600",
         bg: "bg-emerald-50",
@@ -37,7 +34,6 @@ const regions = [
     },
     {
         id: "eu",
-        name: "Avropa",
         clients: "30+",
         color: "from-indigo-500 to-indigo-600",
         bg: "bg-indigo-50",
@@ -50,7 +46,19 @@ export default function GlobalReach({ locale }: GlobalReachProps) {
     const title = locale === 'az' ? 'Qlobal Fəaliyyət Coğrafiyamız' : locale === 'ru' ? 'Наша Глобальная География' : 'Our Global Reach';
     const subtitle = locale === 'az' ? 'Biz yalnız yerli bazarla kifayətlənmir, dünyanın müxtəlif ölkələrindəki müştərilərimizə qabaqcıl texnoloji həllər təqdim edirik.' 
                    : locale === 'ru' ? 'Мы не ограничиваемся локальным рынком, предоставляя передовые технологические решения клиентам по всему миру.' 
+                   : locale === 'tr' ? 'Sadece yerel pazarla yetinmiyor, dünyanın çeşitli ülkelerindeki müşterilerimize gelişmiş teknolojik çözümler sunuyoruz.'
                    : 'We are not limited to the local market, providing advanced technological solutions to clients across various countries.';
+
+    const badge = locale === 'az' ? 'Sərhədsiz Xidmət' : locale === 'ru' ? 'Обслуживание без границ' : locale === 'tr' ? 'Sınırsız Hizmet' : 'Borderless Service';
+    const clientText = locale === 'az' ? 'Məmnun Müştəri' : locale === 'ru' ? 'Довольный клиент' : locale === 'tr' ? 'Memnun Müşteri' : 'Satisfied Client';
+    
+    const getRegionName = (id: string) => {
+        if (id === 'az') return locale === 'az' ? 'Azərbaycan' : locale === 'ru' ? 'Азербайджан' : locale === 'tr' ? 'Azerbaycan' : 'Azerbaijan';
+        if (id === 'tr') return locale === 'az' ? 'Türkiyə' : locale === 'ru' ? 'Турция' : locale === 'tr' ? 'Türkiye' : 'Turkey';
+        if (id === 'kw') return locale === 'az' ? 'Küveyt' : locale === 'ru' ? 'Кувейт' : locale === 'tr' ? 'Kuveyt' : 'Kuwait';
+        if (id === 'eu') return locale === 'az' ? 'Avropa' : locale === 'ru' ? 'Европа' : locale === 'tr' ? 'Avrupa' : 'Europe';
+        return id;
+    };
 
     return (
         <section className="py-16 lg:py-24 bg-white relative overflow-hidden">
@@ -65,7 +73,7 @@ export default function GlobalReach({ locale }: GlobalReachProps) {
             <div className="container relative z-10 mx-auto px-4 max-w-6xl">
                 <div className="text-center mb-16">
                     <span className="text-blue-600 font-bold uppercase tracking-wider text-sm mb-4 block">
-                        Sərhədsiz Xidmət
+                        {badge}
                     </span>
                     <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6">
                         {title}
@@ -93,8 +101,8 @@ export default function GlobalReach({ locale }: GlobalReachProps) {
                                     <div className={`w-20 h-20 rounded-full ${region.bg} ${region.text} flex items-center justify-center text-2xl font-black mb-6 border-4 border-white shadow-md group-hover:scale-110 transition-transform duration-500`}>
                                         {region.clients}
                                     </div>
-                                    <h3 className="text-2xl font-bold text-slate-900 mb-2">{region.name}</h3>
-                                    <p className="text-slate-500 font-medium uppercase tracking-wider text-xs">Məmnun Müştəri</p>
+                                    <h3 className="text-2xl font-bold text-slate-900 mb-2">{getRegionName(region.id)}</h3>
+                                    <p className="text-slate-500 font-medium uppercase tracking-wider text-xs">{clientText}</p>
                                 </MotionDiv>
 
                                 {/* Arrow connecting items (except last one) */}

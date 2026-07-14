@@ -35,7 +35,7 @@ export default function proxy(req: NextRequest) {
   const hasLocaleCookie = req.cookies.has('NEXT_LOCALE');
   
   if (!hasLocaleCookie && pathname === '/') {
-      let country = req.headers.get('x-vercel-ip-country') || req.headers.get('cf-ipcountry');
+      const country = req.headers.get('x-vercel-ip-country') || req.headers.get('cf-ipcountry');
       let localeToSet = routing.defaultLocale;
       
       if (country) {

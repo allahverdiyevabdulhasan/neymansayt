@@ -6,7 +6,8 @@ import ContactFAQSection from "@/app/[locale]/contact/_container/ContactFAQSecti
 import GlobalReach from "@/app/[locale]/contact/_container/GlobalReach";
 import { fetchData, getTranslated } from "@/lib/api";
 
-export default async function ContactPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function ContactPage({ params }: { params: { locale: string } }) {
+    const { locale } = await params;
     const contactData = await fetchData('contact/info');
     const socialData = await fetchData('contact/socials');
     const faqData = await fetchData('about/faqs');
@@ -15,10 +16,15 @@ export default async function ContactPage({ params: { locale } }: { params: { lo
     const socials = socialData || [];
     const faqs = faqData || [];
 
-    const title = locale === 'az' ? 'Əlaqə' : locale === 'ru' ? 'Контакты' : 'Contact';
+    const title = locale === 'az' ? 'Əlaqə' 
+                : locale === 'ru' ? 'Контакты' 
+                : locale === 'tr' ? 'İletişim' 
+                : 'Contact';
+                
     const subtitle = locale === 'az' ? 'Layihəniz haqqında danışmaq üçün bizimlə əlaqə saxlayın'
         : locale === 'ru' ? 'Свяжитесь с нами, чтобы обсудить ваш проект'
-            : 'Contact us to discuss your project';
+        : locale === 'tr' ? 'Projeniz hakkında konuşmak için bizimle iletişime geçin'
+        : 'Contact us to discuss your project';
 
     return (
         <>
@@ -26,13 +32,14 @@ export default async function ContactPage({ params: { locale } }: { params: { lo
                 title={title}
                 subtitle={subtitle}
                 breadcrumbs={[{ label: title }]}
-                background="blue"
-                align="center"
+                background="white"
+                align="left"
             />
 
-            <section className="py-16 lg:py-24 bg-gray-50">
-                <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <section className="py-20 lg:py-32 bg-[#FAFAFC] relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full blur-[100px] pointer-events-none" />
+                <div className="container mx-auto px-4 relative z-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
                         <ContactInfo info={info} socials={socials} locale={locale} />
                         <ContactForm />
                     </div>

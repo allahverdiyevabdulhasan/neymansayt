@@ -8,9 +8,9 @@ export default function Logo() {
                 <Image
                     src="/logo.png"
                     alt="Neyman Logo"
-                    width={220}
-                    height={60}
-                    className="w-auto h-10 lg:h-12 mix-blend-multiply object-contain"
+                    width={400}
+                    height={120}
+                    className="w-auto h-12 md:h-16 lg:h-20 mix-blend-multiply object-contain"
                     priority
                 />
             </div>

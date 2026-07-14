@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-&@gnikh(s!i!1+$&7v)@03s+5aigb93b(&ovxvnfr6j@%7=c+7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'neymantech.com', 'www.neymantech.com', 'api.neymantech.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'neymantech.com', 'www.neymantech.com', 'api.neymantech.com', 'backend']
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 USE_X_FORWARDED_HOST = True
@@ -52,10 +52,10 @@ INSTALLED_APPS = [
     'services',
     'projects',
     'blogs',
-    'crm',
     'about',
     'contact',
     'tracking',
+    'products',
 ]
 
 MIDDLEWARE = [
@@ -128,10 +128,11 @@ LANGUAGES = (
     ('az', 'Azerbaijani'),
     ('en', 'English'),
     ('ru', 'Russian'),
+    ('tr', 'Turkish'),
 )
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'az'
-MODELTRANSLATION_LANGUAGES = ('az', 'en', 'ru')
+MODELTRANSLATION_LANGUAGES = ('az', 'en', 'ru', 'tr')
 
 TIME_ZONE = 'Asia/Baku'
 
@@ -173,7 +174,7 @@ JAZZMIN_SETTINGS = {
     "navigation_expanded": True,
     "hide_apps": [],
     "hide_models": [],
-    "order_with_respect_to": ["home", "services", "projects", "blogs", "crm", "about", "contact", "tracking"],
+    "order_with_respect_to": ["home", "services", "projects", "blogs", "products", "about", "contact", "tracking"],
     "icons": {
         "auth": "fas fa-users-cog",
         "auth.user": "fas fa-user-shield",

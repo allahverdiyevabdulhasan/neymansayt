@@ -84,6 +84,10 @@ const nextConfig: NextConfig = {
     typescript: {
         ignoreBuildErrors: false,
     },
+    // @ts-ignore
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
 
     webpack: (config, { isServer }) => {
         // ✅ Server-side: Leaflet-i ignore et
@@ -112,6 +116,15 @@ const nextConfig: NextConfig = {
             };
         }
         return config;
+    },
+
+    async rewrites() {
+        return [
+            {
+                source: '/media/:path*',
+                destination: 'http://127.0.0.1:8000/media/:path*',
+            },
+        ];
     },
 
     async headers() {

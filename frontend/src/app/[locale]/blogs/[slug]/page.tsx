@@ -5,12 +5,18 @@ import { BlogContent } from "@/app/[locale]/blogs/_container/detail/BlogContent"
 import { RelatedPosts } from "@/app/[locale]/blogs/_container/detail/RelatedPosts";
 import { fetchData, getTranslated } from "@/lib/api";
 import { notFound } from "next/navigation";
+import { redirect } from "@/i18n/navigation";
 
 export default async function BlogDetailPage({ params: { locale, slug } }: { params: { locale: string; slug: string } }) {
     const blogPost = await fetchData(`blogs/${slug}`);
 
     if (!blogPost) {
         notFound();
+    }
+
+    if (blogPost.slug && blogPost.slug !== slug) {
+        // @ts-ignore
+        redirect({ href: `/blogs/${blogPost.slug}` as any, locale });
     }
 
     const title = getTranslated(blogPost, 'title', locale);

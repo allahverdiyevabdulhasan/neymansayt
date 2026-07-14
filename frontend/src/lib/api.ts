@@ -1,4 +1,7 @@
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000/api';
+const isServer = typeof window === 'undefined';
+const BASE_URL = isServer 
+    ? (process.env.INTERNAL_API_URL || 'http://127.0.0.1:8000/api') 
+    : (process.env.NEXT_PUBLIC_API_URL || 'https://api.neymantech.com/api');
 
 export async function getColorizedTitle(title: string, color: string = 'text-brand') {
     if (!title) return '';
@@ -9,13 +12,18 @@ export async function getColorizedTitle(title: string, color: string = 'text-bra
 export async function fetchData(endpoint: string) {
     try {
         const response = await fetch(`${BASE_URL}/${endpoint}/`, {
-            cache: 'no-store', // For real-time updates in dev
+            next: { revalidate: 60 }, // Revalidate every 60 seconds (ISR)
         });
         if (!response.ok) {
             if (response.status === 404) return null;
             throw new Error(`Failed to fetch ${endpoint}`);
         }
-        return response.json();
+        let text = await response.text();
+        // Rewrite internal Docker URLs to public URLs so images work on the client side
+        text = text.replace(/http:\/\/backend:8000/g, 'https://api.neymantech.com');
+        text = text.replace(/http:\/\/127\.0\.0\.1:8000/g, 'https://api.neymantech.com');
+        
+        return JSON.parse(text);
     } catch (error) {
         console.error(`API Error (${endpoint}):`, error);
         return null;

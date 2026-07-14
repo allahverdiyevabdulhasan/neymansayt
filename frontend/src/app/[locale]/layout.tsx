@@ -2,9 +2,9 @@ import React from "react";
 import { routing } from "@/i18n/routing";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
+export const dynamic = 'force-dynamic';
 import { notFound } from "next/navigation";
 import Header from "@/ui/Header/Header";
-import StickyCTA from "@/ui/StickyCTA";
 import Footer from "@/ui/Footer";
 // Lazy load WhatsApp widget to avoid render blocking
 import WhatsAppWidget from "@/ui/StickyWhatsapp";
@@ -24,7 +24,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return {
         title: "Neyman Enterprise Technologies | İnnovativ İT Həllər",
         description: "Startup və korporasiyalar üçün innovativ texniki həllər, web inkişaf, mobil tətbiqlər, UX/UI dizayn və CRM sistemləri.",
-        keywords: ["IT", "Web Development", "Mobile Apps", "UX/UI Design", "CRM", "Neyman", "Tech"],
+        keywords: [
+            "IT", "Web Development", "Mobile Apps", "UX/UI Design", "CRM", "Neyman", "Tech",
+            "Veb sayt yaradılması", "Süni İntellekt həlləri", "Aİ sistemləri", "SEO xidmətləri", 
+            "Startap proqram təminatı", "QR Menyu", "Education CRM"
+        ],
         openGraph: {
             title: "Neyman Enterprise Technologies",
             description: "Biznesinizi növbəti səviyyəyə qaldırmaq üçün buradayıq.",
@@ -74,7 +78,6 @@ export default async function LocalLayout({
             >
                 <NextIntlClientProvider messages={messages}>
                     <Header contact={contact} socials={socialData} locale={locale} />
-                    <StickyCTA />
                     <main className="pt-17 lg:pt-32.5">{children}</main>
                     <Footer contact={contact} socials={socialData} locale={locale} />
                     <WhatsAppWidget phone={contact?.phone} />

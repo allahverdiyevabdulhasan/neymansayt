@@ -28,7 +28,7 @@
       },
       "phone": {
         "title": "Phone",
-        "content": "+994 50 123 45 67",
+        "content": "+994 77 331 26 53 / +90 552 153 23 28",
         "subContent": "Weekdays 09:00 - 18:00"
       },
       "email": {
@@ -59,7 +59,7 @@
         },
         "phone": {
           "label": "Phone Number",
-          "placeholder": "+994 50 123 45 67"
+          "placeholder": "+994 77 331 26 53 / +90 552 153 23 28"
         },
         "subject": {
           "label": "Subject",
@@ -106,5 +106,64 @@
         "required": "Please accept the privacy policy"
       }
     }
+  },
+  "Hero": {
+    "badge": "Premium IT Services",
+    "title1": "Coding your",
+    "title2": "business",
+    "title3": "for the future.",
+    "desc": "Custom software, mobile app and UI/UX design solutions for startups and corporations. Move to the next level with us.",
+    "servicesBtn": "Explore Services",
+    "startupBtn": "Special for Startups",
+    "stat1": "100+ Successful Projects",
+    "stat2": "24/7 Support",
+    "partnersTitle": "Partnerships & Projects",
+    "partnersDesc": "Partners we trust and work with"
+  },
+  "ContactCTA": {
+    "title": "Contact Us",
+    "desc": "Contact us to discuss your project or if you have any questions. We will get back to you quickly.",
+    "call": "Call Us",
+    "whatsapp": "WhatsApp",
+    "email": "Send Email",
+    "callDesc": "Weekdays 9:00 - 18:00",
+    "whatsappDesc": "Fast response",
+    "emailDesc": "Reply within 24 hours",
+    "fillFormBtn": "Fill Contact Form"
+  },
+  "Sidebar": {
+    "crmDemo": "CRM System",
+    "demoLabel": "Demo",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "followUs": "Follow Us"
+  },
+  "StickyWhatsapp": {
+    "greeting": "Hello! 👋 How can we help you? Write on WhatsApp, our team will contact you shortly.",
+    "btnText": "Write on WhatsApp",
+    "ariaLabel": "Contact via WhatsApp",
+    "support": "Support",
+    "replyTime": "Usually replies in 2 minutes",
+    "onlineNow": "Online now"
+  },
+  "Navigation": {
+    "projects": "Projects",
+    "services": "Services",
+    "products": "Products",
+    "blogs": "Blog",
+    "about": "About Us",
+    "contact": "Contact"
+  },
+  "Footer": {
+    "services": "Services",
+    "company": "Company",
+    "webDev": "Web Development",
+    "saas": "SaaS Models",
+    "mobile": "Mobile Apps",
+    "crm": "CRM Systems",
+    "seo": "SEO & Support",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use"
   }
 }

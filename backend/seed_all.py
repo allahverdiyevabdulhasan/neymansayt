@@ -10,7 +10,6 @@ from services.models import Service
 from projects.models import Project
 from blogs.models import Blog
 from contact.models import ContactInfo, SocialMedia
-from crm.models import CRMPricingPlan, CRMFeature, CRMStat, CRMBenefit, CRMNotification
 
 def seed_database():
     print("----- CLEANING OLD DATABASE RECORDS -----")
@@ -28,11 +27,11 @@ def seed_database():
     ContactInfo.objects.all().delete()
     SocialMedia.objects.all().delete()
     
-    CRMPricingPlan.objects.all().delete()
-    CRMFeature.objects.all().delete()
-    CRMStat.objects.all().delete()
-    CRMBenefit.objects.all().delete()
-    CRMNotification.objects.all().delete()
+    # CRMPricingPlan.objects.all().delete()
+    # CRMFeature.objects.all().delete()
+    # CRMStat.objects.all().delete()
+    # CRMBenefit.objects.all().delete()
+    # CRMNotification.objects.all().delete()
 
     print("----- SEEDING ANA SƏHİFƏ MODELS -----")
     # Home Hero

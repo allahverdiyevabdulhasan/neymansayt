@@ -28,7 +28,7 @@
       },
       "phone": {
         "title": "Telefon",
-        "content": "+994 50 123 45 67",
+        "content": "+994 77 331 26 53 / +90 552 153 23 28",
         "subContent": "Hafta içi 09:00 - 18:00"
       },
       "email": {
@@ -59,7 +59,7 @@
         },
         "phone": {
           "label": "Telefon numarası",
-          "placeholder": "+994 50 123 45 67"
+          "placeholder": "+994 77 331 26 53 / +90 552 153 23 28"
         },
         "subject": {
           "label": "Konu",
@@ -106,5 +106,64 @@
         "required": "Gizlilik politikasını kabul etmelisiniz"
       }
     }
+  },
+  "Hero": {
+    "badge": "Premium BT Hizmetleri",
+    "title1": "İşletmenizi",
+    "title2": "geleceğe",
+    "title3": "kodluyoruz.",
+    "desc": "Startuplar ve kurumlar için özel yazılım, mobil uygulama ve UI/UX tasarım çözümleri. Bizimle bir sonraki seviyeye geçin.",
+    "servicesBtn": "Hizmetleri Keşfedin",
+    "startupBtn": "Startuplara Özel",
+    "stat1": "100+ Başarılı Proje",
+    "stat2": "7/24 Destek",
+    "partnersTitle": "Ortaklıklar ve Projeler",
+    "partnersDesc": "Güvendiğimiz ve çalıştığımız ortaklar"
+  },
+  "ContactCTA": {
+    "title": "Bizimle İletişime Geçin",
+    "desc": "Projenizi tartışmak veya herhangi bir sorunuz varsa bizimle iletişime geçin. Size hızlıca geri dönüş yapacağız.",
+    "call": "Bizi Arayın",
+    "whatsapp": "WhatsApp",
+    "email": "E-posta Gönder",
+    "callDesc": "Hafta içi 9:00 - 18:00",
+    "whatsappDesc": "Hızlı yanıt",
+    "emailDesc": "24 saat içinde yanıt",
+    "fillFormBtn": "İletişim Formunu Doldur"
+  },
+  "Sidebar": {
+    "crmDemo": "CRM Sistemi",
+    "demoLabel": "Demo",
+    "emailLabel": "E-posta",
+    "phoneLabel": "Telefon",
+    "followUs": "Bizi Takip Edin"
+  },
+  "StickyWhatsapp": {
+    "greeting": "Merhaba! 👋 Size nasıl yardımcı olabiliriz? WhatsApp'tan yazın, ekibimiz en kısa sürede sizinle iletişime geçecektir.",
+    "btnText": "WhatsApp'tan yaz",
+    "ariaLabel": "WhatsApp ile iletişim",
+    "support": "Destek",
+    "replyTime": "Genellikle 2 dakika içinde yanıtlar",
+    "onlineNow": "Şu an çevrimiçi"
+  },
+  "Navigation": {
+    "projects": "Projelerimiz",
+    "services": "Hizmetlerimiz",
+    "products": "Ürünler",
+    "blogs": "Blog",
+    "about": "Hakkımızda",
+    "contact": "İletişim"
+  },
+  "Footer": {
+    "services": "Hizmetler",
+    "company": "Şirket",
+    "webDev": "Web Geliştirme",
+    "saas": "SaaS Modelleri",
+    "mobile": "Mobil Uygulamalar",
+    "crm": "CRM Sistemleri",
+    "seo": "SEO ve Destek",
+    "rights": "Tüm hakları saklıdır.",
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Şartları"
   }
 }

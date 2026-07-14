@@ -15,27 +15,79 @@ interface SystemItem {
 }
 
 export default function SystemsSlider({ locale }: { locale: string }) {
+    const t = {
+        az: {
+            badge: "Neyman Məhsulları",
+            title1: "Şəxsi CRM & Rəqəmsal ",
+            title2: "Sistemlərimiz",
+            desc: "Biznesinizin hər bir sahəsini kağız və Excel xaosundan uzaqlaşdıraraq anlıq, şəffaf idarəetməyə keçirin.",
+            readMore: "Məlumat Al",
+            sys1: "Kafedralar, kurslar və akademiyalar üçün rəqəmsal Kanban, dərslərin planlanması, avtomatik maaş modulu və satış komissiyası.",
+            sys2: "Müştərilər üçün rəqəmsal menyu və anlıq sifariş, mətbəx üçün anlıq KDS ekranı və ofisiant ağıllı çağırış sistemi.",
+            sys3: "Şirkətdaxili əlaqələr, kadrların idarə edilməsi, əməkdaşlar üzrə performans hesabatlığı və tam əməliyyat nəzarəti."
+        },
+        en: {
+            badge: "Neyman Products",
+            title1: "Custom CRM & Digital ",
+            title2: "Systems",
+            desc: "Move your business away from paper and Excel chaos to instant, transparent management.",
+            readMore: "Learn More",
+            sys1: "Digital Kanban for departments, courses and academies, lesson planning, automatic salary module and sales commission.",
+            sys2: "Digital menu and instant ordering for customers, instant KDS screen for kitchen and smart waiter call system.",
+            sys3: "Internal communications, HR management, employee performance reporting and full operational control."
+        },
+        ru: {
+            badge: "Продукты Neyman",
+            title1: "Собственные CRM и Цифровые ",
+            title2: "Системы",
+            desc: "Переведите свой бизнес от хаоса бумаги и Excel к мгновенному, прозрачному управлению.",
+            readMore: "Узнать больше",
+            sys1: "Цифровой канбан для кафедр, курсов и академий, планирование уроков, автоматический модуль зарплаты и комиссия с продаж.",
+            sys2: "Цифровое меню и мгновенный заказ для клиентов, мгновенный экран KDS для кухни и умная система вызова официанта.",
+            sys3: "Внутренние коммуникации, управление персоналом, отчетность о производительности сотрудников и полный операционный контроль."
+        },
+        tr: {
+            badge: "Neyman Ürünleri",
+            title1: "Özel CRM ve Dijital ",
+            title2: "Sistemlerimiz",
+            desc: "İşletmenizin her alanını kağıt ve Excel kaosundan uzaklaştırarak anlık, şeffaf yönetime geçin.",
+            readMore: "Bilgi Al",
+            sys1: "Bölümler, kurslar ve akademiler için dijital Kanban, ders planlaması, otomatik maaş modülü ve satış komisyonu.",
+            sys2: "Müşteriler için dijital menü ve anlık sipariş, mutfak için anlık KDS ekranı ve akıllı garson çağrı sistemi.",
+            sys3: "Şirket içi iletişim, İK yönetimi, çalışan performans raporlaması ve tam operasyonel kontrol."
+        }
+    }[locale] || {
+        badge: "Neyman Məhsulları",
+        title1: "Şəxsi CRM & Rəqəmsal ",
+        title2: "Sistemlərimiz",
+        desc: "Biznesinizin hər bir sahəsini kağız və Excel xaosundan uzaqlaşdıraraq anlıq, şəffaf idarəetməyə keçirin.",
+        readMore: "Məlumat Al",
+        sys1: "Kafedralar, kurslar və akademiyalar üçün rəqəmsal Kanban, dərslərin planlanması, avtomatik maaş modulu və satış komissiyası.",
+        sys2: "Müştərilər üçün rəqəmsal menyu və anlıq sifariş, mətbəx üçün anlıq KDS ekranı və ofisiant ağıllı çağırış sistemi.",
+        sys3: "Şirkətdaxili əlaqələr, kadrların idarə edilməsi, əməkdaşlar üzrə performans hesabatlığı və tam əməliyyat nəzarəti."
+    };
+
     const systems: SystemItem[] = [
         {
             name: "Neyman Edu CRM",
-            tag: "Təhsil İdarəetməsi",
-            description: "Kafedralar, kurslar və akademiyalar üçün rəqəmsal Kanban, dərslərin planlanması, avtomatik maaş modulu və satış komissiyası.",
+            tag: locale === 'az' ? "Təhsil İdarəetməsi" : locale === 'en' ? "Education Management" : locale === 'ru' ? "Управление образованием" : "Eğitim Yönetimi",
+            description: t.sys1,
             image: "/assets/dashboard_charts.png",
             href: `/${locale}/contact`,
             icon: <FaGraduationCap className="text-blue-600" />
         },
         {
             name: "Avaz QR Menu & KDS",
-            tag: "Restoran Avtomatlaşdırılması",
-            description: "Müştərilər üçün rəqəmsal menyu və anlıq sifariş, mətbəx üçün anlıq KDS ekranı və ofisiant ağıllı çağırış sistemi.",
+            tag: locale === 'az' ? "Restoran Avtomatlaşdırılması" : locale === 'en' ? "Restaurant Automation" : locale === 'ru' ? "Автоматизация ресторанов" : "Restoran Otomasyonu",
+            description: t.sys2,
             image: "/assets/dashboard_finance.png",
             href: `/${locale}/contact`,
             icon: <FaUtensils className="text-emerald-600" />
         },
         {
-            name: "Neyman Edu Soft ERP",
-            tag: "Böyük Müəssisələr Üçün",
-            description: "Şirkətdaxili əlaqələr, kadrların idarə edilməsi, əməkdaşlar üzrə performans hesabatlığı və tam əməliyyat nəzarəti.",
+            name: "Neyman Soft ERP",
+            tag: locale === 'az' ? "Böyük Müəssisələr Üçün" : locale === 'en' ? "For Large Enterprises" : locale === 'ru' ? "Для крупных предприятий" : "Büyük İşletmeler İçin",
+            description: t.sys3,
             image: "/assets/dashboard_charts.png",
             href: `/${locale}/contact`,
             icon: <FaChartLine className="text-purple-600" />
@@ -52,13 +104,13 @@ export default function SystemsSlider({ locale }: { locale: string }) {
 
             <div className="container mb-16 text-center relative z-10">
                 <div className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-blue-600 text-xs font-bold uppercase tracking-widest rounded-full border border-blue-100 mb-6 shadow-sm">
-                    <span>Neyman Məhsulları</span>
+                    <span>{t.badge}</span>
                 </div>
                 <h2 className="text-4xl lg:text-5xl font-black text-blue-950 leading-tight tracking-tight mb-4">
-                    Şəxsi CRM & Rəqəmsal <span className="text-blue-600">Sistemlərimiz</span>
+                    {t.title1}<span className="text-blue-600">{t.title2}</span>
                 </h2>
                 <p className="text-base lg:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium">
-                    Biznesinizin hər bir sahəsini kağız və Excel xaosundan uzaqlaşdıraraq anlıq, şəffaf idarəetməyə keçirin.
+                    {t.desc}
                 </p>
             </div>
 
@@ -120,7 +172,7 @@ export default function SystemsSlider({ locale }: { locale: string }) {
                                     href={item.href}
                                     className="inline-flex items-center gap-2 text-sm font-bold text-blue-600 group-hover:text-blue-700 transition-colors pt-4 border-t border-blue-50/50 w-full"
                                 >
-                                    Məlumat Al <FaArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                                    {t.readMore} <FaArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                                 </Link>
                             </div>
                         </div>

@@ -7,6 +7,7 @@ import { ServiceFAQ } from "@/app/[locale]/services/_component/detail/ServiceFAQ
 import { ServiceCTA } from "@/app/[locale]/services/_component/detail/ServiceCTA";
 import { fetchData, getTranslated } from "@/lib/api";
 import { notFound } from "next/navigation";
+import { redirect } from "@/i18n/navigation";
 
 export default async function ServicesDetail({ params }: { params: { locale: string, slug: string } }) {
     const { locale, slug } = await params;
@@ -14,6 +15,11 @@ export default async function ServicesDetail({ params }: { params: { locale: str
 
     if (!service) {
         notFound();
+    }
+
+    if (service.slug && service.slug !== slug) {
+        // @ts-ignore
+        redirect({ href: `/services/${service.slug}` as any, locale });
     }
 
     const title = getTranslated(service, 'title', locale);
@@ -31,16 +37,16 @@ export default async function ServicesDetail({ params }: { params: { locale: str
             />
 
             <ServiceInfoHero
-                title={title}
-                description={description}
-                duration={service.duration || "14-21 gün"}
-                priceRange={service.price || "1500₼ - 5000₼"}
-                consultation="30 dəqiqə"
+                title={getTranslated(service, 'title', locale)}
+                description={getTranslated(service, 'description', locale)}
+                duration={service.duration}
+                priceRange={service.price}
+                locale={locale}
             />
-            <ServiceIncludes deliverables={getTranslated(service, 'deliverables', locale)} />
+            <ServiceIncludes deliverables={getTranslated(service, 'deliverables', locale)} locale={locale} />
             <TechStack techStack={getTranslated(service, 'tech_stack', locale)} />
             <ServiceFAQ faqs={service.faqs || []} locale={locale} />
-            <ServiceCTA />
+            <ServiceCTA locale={locale} />
         </>
     );
 }

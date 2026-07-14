@@ -17,6 +17,8 @@ services:
     container_name: neyman_frontend
     ports:
       - "3005:3005"
+    environment:
+      - INTERNAL_API_URL=http://backend:8000/api
     depends_on:
       - backend
     restart: always

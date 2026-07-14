@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import { MotionDiv } from "@/lib/motion";
+import { getTranslated } from "@/lib/api";
+
 interface VisionMissionCardProps {
   number: string;
   label: string;
@@ -32,53 +34,56 @@ export const VisionMissionCard: React.FC<VisionMissionCardProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
-      className="relative"
+      className="relative h-full"
     >
       <div
-        className={`rounded-3xl p-8 lg:p-10 shadow-xl h-full ${isLight
-            ? "bg-white shadow-gray-100 border border-gray-100"
-            : "bg-[#2563eb] shadow-blue-900/20 text-white"
+        className={`rounded-[2.5rem] p-10 lg:p-14 h-full transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ${isLight
+            ? "bg-white border border-blue-50 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_50px_rgba(37,99,235,0.08)] hover:border-blue-100"
+            : "bg-gradient-to-br from-blue-600 to-blue-800 shadow-[0_20px_50px_rgba(37,99,235,0.25)] text-white"
           }`}
       >
-        <div className="absolute -top-4 left-8">
-          <span
-            className={`inline-flex items-center justify-center w-12 h-12 rounded-full text-xl font-bold ${isLight ? "bg-[#2563eb] text-white" : "bg-white text-[#2563eb]"
-              }`}
-          >
-            {number}
-          </span>
-        </div>
+        {!isLight && (
+            <>
+                <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-white/10 blur-[60px] rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-[200px] h-[200px] bg-blue-400/20 blur-[40px] rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+            </>
+        )}
 
-        <div className="pt-6">
-          <span
-            className={`text-sm font-semibold tracking-wider uppercase ${isLight ? "text-[#2563eb]" : "text-blue-200"
-              }`}
-          >
-            {label}
-          </span>
+        <div className="relative z-10 flex flex-col h-full">
+            <div className="flex items-center gap-6 mb-10">
+                <span
+                    className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl text-2xl font-black ${isLight ? "bg-blue-50 text-blue-600 shadow-sm" : "bg-white/10 text-white backdrop-blur-md border border-white/20"
+                    }`}
+                >
+                    {number}
+                </span>
+                <span
+                    className={`text-sm font-bold tracking-widest uppercase ${isLight ? "text-blue-600" : "text-blue-200"
+                    }`}
+                >
+                    {label}
+                </span>
+            </div>
 
-          <h3
-            className={`text-2xl lg:text-3xl font-bold mt-4 mb-6 leading-tight ${isLight ? "text-gray-900" : "text-white"
-              }`}
-          >
-            {title}
-          </h3>
+            <h3
+                className={`text-3xl lg:text-4xl font-black mb-6 leading-tight ${isLight ? "text-blue-950" : "text-white"
+                }`}
+            >
+                {title}
+            </h3>
 
-          <p
-            className={`leading-relaxed ${isLight ? "text-gray-600" : "text-blue-100"
-              }`}
-          >
-            {description}
-          </p>
-          <div
-            className={`mt-8 h-1 w-20 rounded-full ${isLight ? "bg-[#2563eb]" : "bg-white/50"
-              }`}
-          />
+            <p
+                className={`text-lg lg:text-xl font-medium leading-relaxed flex-grow ${isLight ? "text-slate-600" : "text-blue-50"
+                }`}
+            >
+                {description}
+            </p>
         </div>
       </div>
     </MotionDiv>
   );
 };
+
 export const QuoteBlock: React.FC<QuoteProps> = ({
   text,
   author,
@@ -91,18 +96,23 @@ export const QuoteBlock: React.FC<QuoteProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
-      className="mt-16 text-center max-w-3xl mx-auto"
+      className="mt-24 text-center max-w-4xl mx-auto"
     >
       <blockquote className="relative">
-        <p className="text-xl lg:text-2xl text-gray-600 italic leading-relaxed">
+        <div className="absolute -top-10 left-1/2 -translate-x-1/2 text-8xl text-blue-100 font-serif opacity-50 select-none">"</div>
+        <p className="relative z-10 text-2xl lg:text-4xl text-slate-700 font-medium italic leading-relaxed px-4">
           {text}
         </p>
       </blockquote>
-      <div className="mt-6 flex items-center justify-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-gray-200" />
-        <div className="text-left">
-          <div className="font-bold text-gray-900">{author}</div>
-          <div className="text-sm text-gray-500">{role}</div>
+      <div className="mt-12 flex flex-col items-center justify-center gap-4">
+        <div className="w-16 h-16 rounded-full bg-blue-100 border-4 border-white shadow-md overflow-hidden relative">
+             <div className="absolute inset-0 flex items-center justify-center text-blue-500 font-bold text-xl uppercase">
+                 {author.charAt(0)}
+             </div>
+        </div>
+        <div className="text-center">
+          <div className="font-black text-xl text-blue-950">{author}</div>
+          <div className="text-sm font-semibold text-blue-600 uppercase tracking-widest mt-1">{role}</div>
         </div>
       </div>
     </MotionDiv>
@@ -120,18 +130,18 @@ export const SectionHeader: React.FC<{
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="text-center mb-16"
+      className="text-center mb-20"
     >
-      <span className="text-[#2563eb] text-sm font-semibold tracking-wider uppercase">
-        {subtitle}
-      </span>
-      <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mt-4">
+      <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white border border-blue-100 text-blue-600 text-sm font-bold tracking-wider uppercase shadow-sm mb-6">
+          <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+          {subtitle}
+      </div>
+      <h2 className="text-4xl lg:text-5xl font-black text-blue-950">
         {title}
       </h2>
     </MotionDiv>
   );
 };
-import { getTranslated } from "@/lib/api";
 
 interface StrategicGoalsProps {
   stats: any[];
@@ -140,33 +150,40 @@ interface StrategicGoalsProps {
 }
 
 const StrategicGoals: React.FC<StrategicGoalsProps> = ({ stats, content, locale }) => {
-  const visionTitle = getTranslated(content, "vision_title", locale) || "Vizyonumuz";
-  const visionDesc = getTranslated(content, "vision_description", locale) || "";
-
-  const missionTitle = getTranslated(content, "mission_title", locale) || "Missiyamız";
-  const missionDesc = getTranslated(content, "mission_description", locale) || "";
-
   const quoteText = getTranslated(content, "quote_text", locale) || "";
   const quoteAuthor = getTranslated(content, "quote_author", locale) || "";
   const quoteRole = getTranslated(content, "quote_role", locale) || "";
 
+  const t = {
+    az: { values: "Dəyərlərimiz", why: "Nə üçün varıq?", visionLabel: "VİZYONUMUZ", missionLabel: "MİSSİYAMIZ", visionTitleDef: "Vizyonumuz", missionTitleDef: "Missiyamız" },
+    en: { values: "Our Values", why: "Why do we exist?", visionLabel: "OUR VISION", missionLabel: "OUR MISSION", visionTitleDef: "Our Vision", missionTitleDef: "Our Mission" },
+    ru: { values: "Наши Ценности", why: "Зачем мы существуем?", visionLabel: "НАШЕ ВИДЕНИЕ", missionLabel: "НАША МИССИЯ", visionTitleDef: "Наше видение", missionTitleDef: "Наша миссия" },
+    tr: { values: "Değerlerimiz", why: "Neden varız?", visionLabel: "VİZYONUMUZ", missionLabel: "MİSYONUMUZ", visionTitleDef: "Vizyonumuz", missionTitleDef: "Misyonumuz" }
+  }[locale as 'az'|'en'|'ru'|'tr'] || { values: "Dəyərlərimiz", why: "Nə üçün varıq?", visionLabel: "VİZYONUMUZ", missionLabel: "MİSSİYAMIZ", visionTitleDef: "Vizyonumuz", missionTitleDef: "Missiyamız" };
+
+  const visionTitle = getTranslated(content, "vision_title", locale) || t.visionTitleDef;
+  const visionDesc = getTranslated(content, "vision_description", locale) || "";
+
+  const missionTitle = getTranslated(content, "mission_title", locale) || t.missionTitleDef;
+  const missionDesc = getTranslated(content, "mission_description", locale) || "";
+
   return (
-    <section className="relative bg-white py-10 lg:py-20 overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-1/2 bg-gray-50" />
+    <section className="relative bg-[#FAFAFC] py-20 lg:py-32 overflow-hidden border-t border-slate-100/50">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/50 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 container">
-        <SectionHeader subtitle="Dəyərlərimiz" title="Nə üçün varıq?" />
+        <SectionHeader subtitle={t.values} title={t.why} />
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           <VisionMissionCard
             number="01"
-            label="Vizyonumuz"
+            label={t.visionLabel}
             title={visionTitle}
             description={visionDesc}
             variant="light"
           />
           <VisionMissionCard
             number="02"
-            label="Missiyamız"
+            label={t.missionLabel}
             title={missionTitle}
             description={missionDesc}
             variant="dark"
@@ -185,11 +202,14 @@ const StrategicGoals: React.FC<StrategicGoalsProps> = ({ stats, content, locale 
 
         {/* Stats Section */}
         {stats && stats.length > 0 && (
-          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="mt-32 grid grid-cols-2 md:grid-cols-4 gap-8 bg-white p-12 rounded-[3rem] shadow-[0_4px_20px_rgba(0,0,0,0.02)] border border-blue-50">
             {stats.map((stat, idx) => (
-              <div key={idx} className="text-center">
-                <div className="text-3xl lg:text-4xl font-bold text-blue-600 mb-2">{stat.value}</div>
-                <div className="text-gray-500 text-sm font-medium uppercase tracking-wider">{getTranslated(stat, 'label', locale)}</div>
+              <div key={idx} className="text-center relative">
+                {idx !== 0 && (
+                  <div className="hidden md:block absolute top-1/2 -left-4 -translate-y-1/2 w-px h-16 bg-slate-100" />
+                )}
+                <div className="text-4xl lg:text-5xl font-black text-blue-600 mb-3">{stat.value}</div>
+                <div className="text-slate-500 text-sm font-bold uppercase tracking-widest">{getTranslated(stat, 'label', locale)}</div>
               </div>
             ))}
           </div>

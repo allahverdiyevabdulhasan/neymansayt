@@ -5,6 +5,8 @@ export type Pathnames = {
   "/about": { az: string; en: string; ru: string; tr: string };
   "/contact": { az: string; en: string; ru: string; tr: string };
   "/services": { az: string; en: string; ru: string; tr: string };
+  "/products": { az: string; en: string; ru: string; tr: string };
+  "/projects": { az: string; en: string; ru: string; tr: string };
 };
 export const routing = defineRouting({
   locales: ["az", "en", "ru", "tr"],
@@ -41,6 +43,30 @@ export const routing = defineRouting({
       en: "/services/[slug]",
       ru: "/uslugi/[slug]",
       tr: "/hizmetler/[slug]",
+    },
+    "/products": {
+      az: "/mehsullar",
+      en: "/products",
+      ru: "/produkti",
+      tr: "/urunler",
+    },
+    "/products/[slug]": {
+      az: "/mehsullar/[slug]",
+      en: "/products/[slug]",
+      ru: "/produkti/[slug]",
+      tr: "/urunler/[slug]",
+    },
+    "/projects": {
+      az: "/layiheler",
+      en: "/projects",
+      ru: "/proekti",
+      tr: "/projeler",
+    },
+    "/projects/[slug]": {
+      az: "/layiheler/[slug]",
+      en: "/projects/[slug]",
+      ru: "/proekti/[slug]",
+      tr: "/projeler/[slug]",
     },
     "/blogs": {
       az: "/bloqlar",

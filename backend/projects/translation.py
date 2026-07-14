@@ -3,4 +3,4 @@ from .models import Project
 
 @register(Project)
 class ProjectTranslationOptions(TranslationOptions):
-    fields = ('title', 'category', 'description', 'content', 'problem', 'solution', 'technologies', 'client_name', 'testimonial_quote', 'testimonial_author', 'testimonial_role')
+    fields = ('title', 'slug', 'category', 'description', 'content', 'problem', 'solution', 'technologies', 'client_name', 'testimonial_quote', 'testimonial_author', 'testimonial_role')

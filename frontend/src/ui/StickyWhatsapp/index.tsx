@@ -10,15 +10,17 @@ import {
     FaHeadset
 } from 'react-icons/fa';
 import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 const WhatsAppWidget: React.FC<{ phone?: string }> = ({ phone }) => {
+    const t = useTranslations('StickyWhatsapp');
     const [isOpen, setIsOpen] = useState(false);
     const [hasNewMessage, setHasNewMessage] = useState(true);
     const whatsappNumber = phone ? phone.replace(/\s/g, '').replace('+', '') : "994501234567";
     const whatsappLink = `https://wa.me/${whatsappNumber}`;
 
     return (
-        <div className="fixed bottom-20 lg:bottom-6 right-6 z-50 flex flex-col items-end">
+        <div className="fixed bottom-24 lg:bottom-12 right-6 z-50 flex flex-col items-end">
 
             {/* Modal - Button üstündə */}
             <AnimatePresence>
@@ -64,10 +66,10 @@ const WhatsAppWidget: React.FC<{ phone?: string }> = ({ phone }) => {
                                         </div>
                                         <div>
                                             <h3 className="text-white font-bold text-lg">
-                                                Dəstək
+                                                {t('support')}
                                             </h3>
                                             <p className="text-white/80 text-sm">
-                                                Adətən 2 dəqiqədə cavab
+                                                {t('replyTime')}
                                             </p>
                                         </div>
                                     </div>
@@ -76,8 +78,7 @@ const WhatsAppWidget: React.FC<{ phone?: string }> = ({ phone }) => {
                                 {/* Body */}
                                 <div className="p-4">
                                     <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                                        Salam! 👋 Sizə necə kömək edə bilərik? WhatsApp-dan yazın, komandamız sizinlə
-                                        əlaqə saxlasın.
+                                        {t('greeting')}
                                     </p>
 
                                     {/* Chat Button */}
@@ -89,7 +90,7 @@ const WhatsAppWidget: React.FC<{ phone?: string }> = ({ phone }) => {
                                         className="w-full flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#128C7E] text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-300 shadow-lg shadow-[#25D366]/30 hover:shadow-[#25D366]/50 group"
                                     >
                                         <FaWhatsapp size={22} className="group-hover:scale-110 transition-transform" />
-                                        <span>WhatsApp-da yaz</span>
+                                        <span>{t('btnText')}</span>
                                         <FaArrowRight size={16}
                                             className="group-hover:translate-x-1 transition-transform" />
                                     </a>
@@ -97,7 +98,7 @@ const WhatsAppWidget: React.FC<{ phone?: string }> = ({ phone }) => {
                                     {/* Info */}
                                     <div className="mt-4 flex items-center justify-center gap-2 text-xs text-gray-400">
                                         <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                                        <span>İndi onlayn</span>
+                                        <span>{t('onlineNow')}</span>
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +131,7 @@ const WhatsAppWidget: React.FC<{ phone?: string }> = ({ phone }) => {
                         : 'bg-[#25D366] hover:bg-[#128C7E] shadow-[#25D366]/40'
                     }
                 `}
-                aria-label="WhatsApp ilə əlaqə"
+                aria-label={t('ariaLabel')}
             >
                 {isOpen ? (
                     <FaTimes size={28} className="text-white" />

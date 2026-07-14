@@ -25,6 +25,7 @@ interface ProcessDetailProps {
     step: Step;
     totalSteps: number;
     currentIndex: number;
+    locale: string;
 }
 
 // Step Card Component
@@ -87,7 +88,14 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, isActive, onClick, inde
 };
 
 // Detail Card Component
-const ProcessDetail: React.FC<ProcessDetailProps> = ({ step, totalSteps, currentIndex }) => {
+const ProcessDetail: React.FC<ProcessDetailProps> = ({ step, totalSteps, currentIndex, locale }) => {
+    const t = {
+        az: { phase: "Mərhələ", duration: "Müddət", get: "Əldə edəcəkləriniz", progress: "Ümumi proqres" },
+        en: { phase: "Stage", duration: "Duration", get: "Deliverables", progress: "Overall progress" },
+        ru: { phase: "Этап", duration: "Срок", get: "Вы получите", progress: "Общий прогресс" },
+        tr: { phase: "Aşama", duration: "Süre", get: "Elde Edecekleriniz", progress: "Genel ilerleme" }
+    }[locale as 'az'|'en'|'ru'|'tr'] || { phase: "Mərhələ", duration: "Müddət", get: "Əldə edəcəkləriniz", progress: "Ümumi proqres" };
+
     return (
         <MotionDiv
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -107,7 +115,7 @@ const ProcessDetail: React.FC<ProcessDetailProps> = ({ step, totalSteps, current
                         transition={{ delay: 0.1 }}
                         className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider mb-3"
                     >
-                        Mərhələ {step.number} / 0{totalSteps}
+                        {t.phase} {step.number} / 0{totalSteps}
                     </MotionDiv>
                     <motion.h3
                         initial={{ opacity: 0, y: 10 }}
@@ -126,7 +134,7 @@ const ProcessDetail: React.FC<ProcessDetailProps> = ({ step, totalSteps, current
                     transition={{ delay: 0.2 }}
                     className="px-4 py-2 rounded-xl bg-slate-50 border border-slate-100"
                 >
-                    <span className="text-xs text-slate-500 uppercase tracking-wider block font-bold">Müddət</span>
+                    <span className="text-xs text-slate-500 uppercase tracking-wider block font-bold">{t.duration}</span>
                     <span className="text-sm font-black text-blue-950">{step.duration}</span>
                 </MotionDiv>
             </div>
@@ -145,7 +153,7 @@ const ProcessDetail: React.FC<ProcessDetailProps> = ({ step, totalSteps, current
             <div className="mb-8 relative z-10">
                 <h4 className="text-sm font-bold text-blue-950 uppercase tracking-wider mb-4 flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                    Əldə edəcəkləriniz
+                    {t.get}
                 </h4>
                 <div className="grid sm:grid-cols-2 gap-3">
                     {step.deliverables.map((item, idx) => (
@@ -169,7 +177,7 @@ const ProcessDetail: React.FC<ProcessDetailProps> = ({ step, totalSteps, current
             {/* Progress Bar */}
             <div className="pt-6 border-t border-slate-100 relative z-10">
                 <div className="flex items-center justify-between text-sm mb-3">
-                    <span className="text-slate-500 font-bold">Ümumi proqres</span>
+                    <span className="text-slate-500 font-bold">{t.progress}</span>
                     <span className="font-black text-blue-600">
                         {Math.round(((currentIndex + 1) / totalSteps) * 100)}%
                     </span>
@@ -201,26 +209,35 @@ const ProcessDetail: React.FC<ProcessDetailProps> = ({ step, totalSteps, current
 };
 
 // Header Component
-const SectionHeader: React.FC = () => (
-    <MotionDiv
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-16"
-    >
-        <span
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-blue-100 text-blue-600 text-sm font-bold tracking-wide uppercase mb-6">
-            İş Prosesimiz
-        </span>
-        <strong className="text-3xl block sm:text-5xl font-black text-blue-950 mb-4 leading-tight tracking-tight">
-            Necə <span className="text-blue-600">Çalışırıq?</span>
-        </strong>
-        <p className="text-base lg:text-lg text-slate-600 max-w-2xl mx-auto font-medium">
-            Şəffaf və strukturlaşdırılmış prosesimiz ilə layihənizi uğurla sona çatdırırıq.
-        </p>
-    </MotionDiv>
-);
+const SectionHeader: React.FC<{ locale: string }> = ({ locale }) => {
+    const t = {
+        az: { badge: "İş Prosesimiz", title1: "Necə ", title2: "Çalışırıq?", desc: "Şəffaf və strukturlaşdırılmış prosesimiz ilə layihənizi uğurla sona çatdırırıq." },
+        en: { badge: "Our Work Process", title1: "How We ", title2: "Work?", desc: "We successfully complete your project with our transparent and structured process." },
+        ru: { badge: "Наш Рабочий Процесс", title1: "Как мы ", title2: "Работаем?", desc: "Мы успешно завершаем ваш проект благодаря нашему прозрачному и структурированному процессу." },
+        tr: { badge: "İş Sürecimiz", title1: "Nasıl ", title2: "Çalışıyoruz?", desc: "Şeffaf ve yapılandırılmış sürecimizle projenizi başarıyla tamamlıyoruz." }
+    }[locale as 'az'|'en'|'ru'|'tr'] || { badge: "İş Prosesimiz", title1: "Necə ", title2: "Çalışırıq?", desc: "Şəffaf və strukturlaşdırılmış prosesimiz ilə layihənizi uğurla sona çatdırırıq." };
+
+    return (
+        <MotionDiv
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+        >
+            <span
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-blue-100 text-blue-600 text-sm font-bold tracking-wide uppercase mb-6">
+                {t.badge}
+            </span>
+            <strong className="text-3xl block sm:text-5xl font-black text-blue-950 mb-4 leading-tight tracking-tight">
+                {t.title1}<span className="text-blue-600">{t.title2}</span>
+            </strong>
+            <p className="text-base lg:text-lg text-slate-600 max-w-2xl mx-auto font-medium">
+                {t.desc}
+            </p>
+        </MotionDiv>
+    );
+};
 
 // Main Component
 interface ProcessProps {
@@ -250,7 +267,7 @@ const ProcessSection: React.FC<ProcessProps> = ({ steps, locale }) => {
             </div>
 
             <div className="relative z-10 container">
-                <SectionHeader />
+                <SectionHeader locale={locale} />
 
                 <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
                     {/* Steps List */}
@@ -274,6 +291,7 @@ const ProcessSection: React.FC<ProcessProps> = ({ steps, locale }) => {
                                 step={displaySteps[activeStep]}
                                 totalSteps={displaySteps.length}
                                 currentIndex={activeStep}
+                                locale={locale}
                             />
                         </AnimatePresence>
                     </div>

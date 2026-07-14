@@ -13,8 +13,6 @@ const StickyCTA: React.FC = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [isDismissed, setIsDismissed] = useState(false);
     
-    if (isPresentation) return null;
-
 
     useEffect(() => {
         const handleScroll = () => {
@@ -34,6 +32,8 @@ const StickyCTA: React.FC = () => {
         setIsDismissed(true);
         setIsVisible(false);
     };
+
+    if (isPresentation) return null;
 
     return (
         <AnimatePresence>

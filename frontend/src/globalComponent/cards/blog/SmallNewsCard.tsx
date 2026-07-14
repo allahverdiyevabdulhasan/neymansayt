@@ -58,7 +58,7 @@ const SmallNewsCard: React.FC<{ item: NewsItem; index: number; locale: string }>
 
                     {/* Link */}
                     <span className="inline-flex items-center gap-1 text-[#2563eb] text-sm font-medium">
-                        Daha çox oxu
+                        {locale === 'az' ? 'Daha çox oxu' : locale === 'ru' ? 'Читать далее' : locale === 'tr' ? 'Daha fazla oku' : 'Read more'}
                         <IoArrowForward size={14} />
                     </span>
                 </div>

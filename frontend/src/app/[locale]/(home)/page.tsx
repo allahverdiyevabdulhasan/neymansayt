@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import React from "react";
 import HeroSection from "@/app/[locale]/(home)/_components/Hero";
 import PartnersSection from "@/app/[locale]/(home)/_components/PartnersSection";
@@ -8,16 +9,17 @@ import { MonthlySupportSection } from "@/app/[locale]/(home)/_components/Monthly
 import { fetchData } from "@/lib/api";
 
 export default async function HomePage({ params }: { params: { locale: string } }) {
-    const locale = params.locale;
+    const { locale } = await params;
 
     // Fetch data for dynamic sections
-    let heroData, partnersData, projectsData;
+    let heroData, partnersData, projectsData, servicesData;
 
     try {
-        [heroData, partnersData, projectsData] = await Promise.all([
+        [heroData, partnersData, projectsData, servicesData] = await Promise.all([
             fetchData('home/hero'),
             fetchData('home/partners'),
-            fetchData('projects')
+            fetchData('projects'),
+            fetchData('services')
         ]);
     } catch (error) {
         console.error("Error fetching home page data:", error);
@@ -26,13 +28,13 @@ export default async function HomePage({ params }: { params: { locale: string } 
     return (
         <main className="min-h-screen bg-slate-50">
             {/* 1. Hero Section */}
-            <HeroSection data={heroData} locale={locale} />
+            <HeroSection data={heroData} locale={locale} partners={partnersData || []} />
 
             {/* 2. Trust Block (Partners) */}
             <PartnersSection partners={partnersData || []} locale={locale} />
 
-            {/* 3. Quick Navigation (Categories) */}
-            <QuickNavSection />
+            {/* 3. Quick Navigation (Categories/Services) */}
+            <QuickNavSection servicesData={servicesData || []} locale={locale} />
 
             {/* 4. Selected Works */}
             <ProjectsSection projects={projectsData || []} locale={locale} />
@@ -41,7 +43,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
             <ProjectTracking locale={locale} />
 
             {/* 6. Monthly Support Pitch */}
-            <MonthlySupportSection />
+            <MonthlySupportSection locale={locale} />
         </main>
     );
 }
