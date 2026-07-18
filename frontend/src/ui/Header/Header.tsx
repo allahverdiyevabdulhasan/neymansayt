@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ contact, socials, locale }) => {
     const navT = useTranslations('Navigation');
     const pathname = usePathname();
 
-    const isProductPage = pathname && pathname.match(/\/products\/[^\/]+/);
+    const isProductPage = pathname && pathname.match(/\/(products|mehsullar|produkti|urunler)\/[^\/]+/);
 
     const { scrollY } = useScroll();
     const headerTopHeight = useTransform(scrollY, [0, 100], [40, 0]);

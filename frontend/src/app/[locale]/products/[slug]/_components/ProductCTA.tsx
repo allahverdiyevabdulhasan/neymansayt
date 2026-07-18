@@ -1,9 +1,11 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { getTranslated } from "@/lib/api";
+import { DemoModal } from "./DemoModal";
 
 export const ProductCTA = ({ product, locale }: { product: any, locale: string }) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const themeColor = product.theme_color || 'blue';
     const mainColor = themeColor === 'blue' ? '#2563eb' : themeColor === 'emerald' ? '#10b981' : themeColor === 'indigo' ? '#4f46e5' : themeColor;
     const ctaText = getTranslated(product, 'cta_text', locale) || 'Demo Sifariş Et';
@@ -39,14 +41,14 @@ export const ProductCTA = ({ product, locale }: { product: any, locale: string }
                         {t.desc}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
-                        <a 
-                            href={ctaLink}
+                        <button 
+                            onClick={() => setIsModalOpen(true)}
                             className="group inline-flex justify-center items-center gap-3 px-8 py-4 text-white font-bold rounded-2xl transition-all shadow-xl hover:-translate-y-1 hover:shadow-2xl"
                             style={{ backgroundColor: mainColor }}
                         >
                             {ctaText}
                             <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-                        </a>
+                        </button>
                         <a 
                             href="tel:+994773312653"
                             className="inline-flex justify-center items-center gap-3 px-8 py-4 bg-white text-gray-900 font-bold rounded-2xl border-2 border-gray-200 hover:border-gray-300 transition-all shadow-sm"
@@ -56,6 +58,13 @@ export const ProductCTA = ({ product, locale }: { product: any, locale: string }
                     </div>
                 </div>
             </div>
+            
+            <DemoModal 
+                isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)} 
+                product={product} 
+                locale={locale} 
+            />
         </section>
     );
 };

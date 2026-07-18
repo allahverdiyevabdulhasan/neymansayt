@@ -15,8 +15,9 @@ import {
 import Logo from "@/globalComponent/Logo";
 import Link from "next/link";
 import {navLinks} from "@/data/constant";
-import {NavLink} from "@/data/interface";
-import { useTranslations } from "next-intl";
+import { NavLink } from "@/data/interface";
+import { useTranslations, useLocale } from "next-intl";
+import LanguageSwitcher from "../Header/LanguageSwitcher";
 
 interface SocialLink {
     icon: React.ReactNode;
@@ -32,6 +33,7 @@ interface MobileSidebarProps {
 const MobileSidebar: React.FC<MobileSidebarProps> = ({isOpen, onClose}) => {
     const t = useTranslations('Sidebar');
     const navT = useTranslations('Navigation');
+    const locale = useLocale();
     const [activeLink, setActiveLink] = useState("/");
 
     // Lock body scroll when sidebar is open
@@ -163,17 +165,27 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({isOpen, onClose}) => {
                                 <Logo/>
                             </motion.div>
 
-                            <motion.button
-                                onClick={onClose}
-                                className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors"
-                                whileHover={{scale: 1.1, rotate: 90}}
-                                whileTap={{scale: 0.9}}
-                                initial={{opacity: 0, rotate: -90}}
-                                animate={{opacity: 1, rotate: 0}}
-                                transition={{delay: 0.3}}
-                            >
-                                <IoClose size={24}/>
-                            </motion.button>
+                            <div className="flex items-center gap-3">
+                                <motion.div
+                                    initial={{opacity: 0, x: 20}}
+                                    animate={{opacity: 1, x: 0}}
+                                    transition={{delay: 0.25}}
+                                >
+                                    <LanguageSwitcher currentLocale={locale} />
+                                </motion.div>
+
+                                <motion.button
+                                    onClick={onClose}
+                                    className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors"
+                                    whileHover={{scale: 1.1, rotate: 90}}
+                                    whileTap={{scale: 0.9}}
+                                    initial={{opacity: 0, rotate: -90}}
+                                    animate={{opacity: 1, rotate: 0}}
+                                    transition={{delay: 0.3}}
+                                >
+                                    <IoClose size={24}/>
+                                </motion.button>
+                            </div>
                         </div>
 
                         {/* Navigation Links */}
@@ -223,28 +235,6 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({isOpen, onClose}) => {
                                         </motion.div>
                                     );
                                 })}
-
-                                {/* CRM Demo Button - Special */}
-                                <motion.div variants={linkVariants}>
-                                    <Link
-                                        href="/crm"
-                                        onClick={onClose}
-                                        className="group flex items-center justify-between p-4 mt-4 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-600/30 border border-blue-500/30"
-                                    >
-                                        <span className="text-lg font-bold">{t('crmDemo')}</span>
-                                        <div className="flex items-center gap-2">
-                                            <span
-                                                className="text-xs bg-white/20 px-2 py-1 rounded-full font-medium">{t('demoLabel')}</span>
-                                            <motion.div
-                                                className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"
-                                                animate={{x: [0, 4, 0]}}
-                                                transition={{repeat: Infinity, duration: 1.5}}
-                                            >
-                                                <IoArrowForward size={18}/>
-                                            </motion.div>
-                                        </div>
-                                    </Link>
-                                </motion.div>
                             </motion.div>
                         </nav>
 

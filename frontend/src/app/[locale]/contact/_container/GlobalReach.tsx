@@ -3,46 +3,23 @@ import React from "react";
 import { MotionDiv } from "@/lib/motion";
 import { FaArrowRight } from "react-icons/fa6";
 
+import { getTranslated } from "@/lib/api";
+
 interface GlobalReachProps {
     locale: string;
+    data: any[];
 }
 
-const regions = [
-    {
-        id: "az",
-        clients: "100+",
-        color: "from-blue-500 to-blue-600",
-        bg: "bg-blue-50",
-        text: "text-blue-600",
-        border: "border-blue-200"
-    },
-    {
-        id: "tr",
-        clients: "45+",
-        color: "from-red-500 to-red-600",
-        bg: "bg-red-50",
-        text: "text-red-600",
-        border: "border-red-200"
-    },
-    {
-        id: "kw",
-        clients: "15+",
-        color: "from-emerald-500 to-emerald-600",
-        bg: "bg-emerald-50",
-        text: "text-emerald-600",
-        border: "border-emerald-200"
-    },
-    {
-        id: "eu",
-        clients: "30+",
-        color: "from-indigo-500 to-indigo-600",
-        bg: "bg-indigo-50",
-        text: "text-indigo-600",
-        border: "border-indigo-200"
-    }
+const colorThemes = [
+    { bg: "bg-blue-50", text: "text-blue-600", border: "border-blue-200" },
+    { bg: "bg-red-50", text: "text-red-600", border: "border-red-200" },
+    { bg: "bg-emerald-50", text: "text-emerald-600", border: "border-emerald-200" },
+    { bg: "bg-indigo-50", text: "text-indigo-600", border: "border-indigo-200" },
+    { bg: "bg-orange-50", text: "text-orange-600", border: "border-orange-200" },
+    { bg: "bg-purple-50", text: "text-purple-600", border: "border-purple-200" },
 ];
 
-export default function GlobalReach({ locale }: GlobalReachProps) {
+export default function GlobalReach({ locale, data }: GlobalReachProps) {
     const title = locale === 'az' ? 'Qlobal Fəaliyyət Coğrafiyamız' : locale === 'ru' ? 'Наша Глобальная География' : 'Our Global Reach';
     const subtitle = locale === 'az' ? 'Biz yalnız yerli bazarla kifayətlənmir, dünyanın müxtəlif ölkələrindəki müştərilərimizə qabaqcıl texnoloji həllər təqdim edirik.' 
                    : locale === 'ru' ? 'Мы не ограничиваемся локальным рынком, предоставляя передовые технологические решения клиентам по всему миру.' 
@@ -52,13 +29,7 @@ export default function GlobalReach({ locale }: GlobalReachProps) {
     const badge = locale === 'az' ? 'Sərhədsiz Xidmət' : locale === 'ru' ? 'Обслуживание без границ' : locale === 'tr' ? 'Sınırsız Hizmet' : 'Borderless Service';
     const clientText = locale === 'az' ? 'Məmnun Müştəri' : locale === 'ru' ? 'Довольный клиент' : locale === 'tr' ? 'Memnun Müşteri' : 'Satisfied Client';
     
-    const getRegionName = (id: string) => {
-        if (id === 'az') return locale === 'az' ? 'Azərbaycan' : locale === 'ru' ? 'Азербайджан' : locale === 'tr' ? 'Azerbaycan' : 'Azerbaijan';
-        if (id === 'tr') return locale === 'az' ? 'Türkiyə' : locale === 'ru' ? 'Турция' : locale === 'tr' ? 'Türkiye' : 'Turkey';
-        if (id === 'kw') return locale === 'az' ? 'Küveyt' : locale === 'ru' ? 'Кувейт' : locale === 'tr' ? 'Kuveyt' : 'Kuwait';
-        if (id === 'eu') return locale === 'az' ? 'Avropa' : locale === 'ru' ? 'Европа' : locale === 'tr' ? 'Avrupa' : 'Europe';
-        return id;
-    };
+    const regions = data && data.length > 0 ? data : [];
 
     return (
         <section className="py-16 lg:py-24 bg-white relative overflow-hidden">
@@ -89,8 +60,10 @@ export default function GlobalReach({ locale }: GlobalReachProps) {
                     <div className="hidden lg:block absolute top-1/2 left-0 w-full h-1 bg-slate-100 -translate-y-1/2 z-0 rounded-full" />
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative z-10">
-                        {regions.map((region, index) => (
-                            <div key={region.id} className="relative group">
+                        {regions.map((region, index) => {
+                            const theme = colorThemes[index % colorThemes.length];
+                            return (
+                            <div key={region.id || index} className="relative group">
                                 <MotionDiv
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
@@ -98,10 +71,10 @@ export default function GlobalReach({ locale }: GlobalReachProps) {
                                     transition={{ duration: 0.5, delay: index * 0.15 }}
                                     className="bg-white p-8 rounded-3xl border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center text-center relative z-10"
                                 >
-                                    <div className={`w-20 h-20 rounded-full ${region.bg} ${region.text} flex items-center justify-center text-2xl font-black mb-6 border-4 border-white shadow-md group-hover:scale-110 transition-transform duration-500`}>
-                                        {region.clients}
+                                    <div className={`w-20 h-20 rounded-full ${theme.bg} ${theme.text} flex items-center justify-center text-2xl font-black mb-6 border-4 border-white shadow-md group-hover:scale-110 transition-transform duration-500`}>
+                                        {region.client_count}
                                     </div>
-                                    <h3 className="text-2xl font-bold text-slate-900 mb-2">{getRegionName(region.id)}</h3>
+                                    <h3 className="text-2xl font-bold text-slate-900 mb-2">{getTranslated(region, 'country_name', locale)}</h3>
                                     <p className="text-slate-500 font-medium uppercase tracking-wider text-xs">{clientText}</p>
                                 </MotionDiv>
 
@@ -114,7 +87,8 @@ export default function GlobalReach({ locale }: GlobalReachProps) {
                                     </div>
                                 )}
                             </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </div>

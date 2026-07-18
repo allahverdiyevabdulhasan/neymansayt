@@ -25,8 +25,10 @@ export function ProjectsCard({ project, locale }: { project: Project, locale: st
     
     // Fix relative image URLs from Django API
     if (thumbnail.startsWith('/')) {
-        const baseUrl = process.env.NEXT_PUBLIC_API_URL?.replace('/api', '') || 'https://api.neymantech.com';
-        thumbnail = `${baseUrl}${thumbnail}`;
+        const publicApiUrl = process.env.NEXT_PUBLIC_API_URL 
+            ? process.env.NEXT_PUBLIC_API_URL.replace(/\/api$/, '') 
+            : 'https://api.neymantech.com';
+        thumbnail = `${publicApiUrl}${thumbnail}`;
     }
 
     return (
@@ -50,7 +52,7 @@ export function ProjectsCard({ project, locale }: { project: Project, locale: st
                     {project.images && project.images.slice(1).map((img: any, i) => {
                         const imgSrc = img.image || img.src || '';
                         if (!imgSrc) return null;
-                        const finalSrc = imgSrc.startsWith('/') ? `https://api.neymantech.com${imgSrc}` : imgSrc;
+                        const finalSrc = imgSrc.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace(/\/api$/, '') : 'https://api.neymantech.com'}${imgSrc}` : imgSrc;
                         return (
                             <a key={i} href={finalSrc} data-fancybox={`gallery-${project.id}`} className="hidden">
                                 <img src={finalSrc} alt={img.alt || project.title} />

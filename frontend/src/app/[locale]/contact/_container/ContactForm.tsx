@@ -75,7 +75,7 @@ export default function ContactForm() {
         setSubmitError(null);
 
         try {
-            const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000/api';
+            const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.neymantech.com/api';
             const response = await fetch(`${baseUrl}/contact/messages/`, {
                 method: 'POST',
                 headers: {

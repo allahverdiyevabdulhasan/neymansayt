@@ -10,8 +10,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   
   staticRoutes.forEach(route => {
       locales.forEach(locale => {
+          const pathPrefix = locale === 'az' ? '' : `/${locale}`;
           sitemapEntries.push({
-              url: `${baseUrl}/${locale}${route}`,
+              url: `${baseUrl}${pathPrefix}${route}`,
               lastModified: new Date(),
               changeFrequency: 'weekly',
               priority: route === '' ? 1 : 0.8,
@@ -24,8 +25,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       if (Array.isArray(products)) {
           products.forEach((product: any) => {
               locales.forEach(locale => {
+                  const pathPrefix = locale === 'az' ? '' : `/${locale}`;
                   sitemapEntries.push({
-                      url: `${baseUrl}/${locale}/products/${product.slug}`,
+                      url: `${baseUrl}${pathPrefix}/products/${product.slug}`,
                       lastModified: new Date(),
                       changeFrequency: 'weekly',
                       priority: 0.9,
@@ -43,8 +45,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       if (Array.isArray(results)) {
           results.forEach((blog: any) => {
               locales.forEach(locale => {
+                  const pathPrefix = locale === 'az' ? '' : `/${locale}`;
                   sitemapEntries.push({
-                      url: `${baseUrl}/${locale}/blogs/${blog.slug}`,
+                      url: `${baseUrl}${pathPrefix}/blogs/${blog.slug}`,
                       lastModified: new Date(),
                       changeFrequency: 'daily',
                       priority: 0.7,
@@ -61,8 +64,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       if (Array.isArray(services)) {
           services.forEach((service: any) => {
               locales.forEach(locale => {
+                  const pathPrefix = locale === 'az' ? '' : `/${locale}`;
                   sitemapEntries.push({
-                      url: `${baseUrl}/${locale}/services/${service.slug || service.id}`,
+                      url: `${baseUrl}${pathPrefix}/services/${service.slug || service.id}`,
                       lastModified: new Date(),
                       changeFrequency: 'monthly',
                       priority: 0.8,
@@ -79,8 +83,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       if (Array.isArray(projects)) {
           projects.forEach((project: any) => {
               locales.forEach(locale => {
+                  const pathPrefix = locale === 'az' ? '' : `/${locale}`;
                   sitemapEntries.push({
-                      url: `${baseUrl}/${locale}/projects/${project.slug || project.id}`,
+                      url: `${baseUrl}${pathPrefix}/projects/${project.slug || project.id}`,
                       lastModified: new Date(),
                       changeFrequency: 'monthly',
                       priority: 0.8,

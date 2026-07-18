@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { usePathname, useRouter } from "@/i18n/navigation";
+import { useParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronDown, FaGlobe } from "react-icons/fa";
 
@@ -16,10 +17,12 @@ export default function LanguageSwitcher({ currentLocale }: { currentLocale: str
     const [isOpen, setIsOpen] = useState(false);
     const router = useRouter();
     const pathname = usePathname();
+    const params = useParams();
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     const handleLanguageChange = (newLocale: string) => {
-        router.replace(pathname as any, { locale: newLocale });
+        // @ts-ignore
+        router.replace({ pathname, params }, { locale: newLocale });
         setIsOpen(false);
     };
 

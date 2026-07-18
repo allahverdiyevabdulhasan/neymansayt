@@ -25,6 +25,36 @@ export default async function ServicesDetail({ params }: { params: { locale: str
     const title = getTranslated(service, 'title', locale);
     const description = getTranslated(service, 'description', locale);
 
+    const serviceUrl = `https://neymantech.com/${locale === 'az' ? '' : locale + '/'}services/${slug}`;
+
+    const serviceSchema = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": title,
+        "provider": {
+            "@type": "Organization",
+            "name": "Neyman Enterprise Technologies"
+        },
+        "url": serviceUrl,
+        "areaServed": "AZ"
+    };
+
+    let faqSchema = null;
+    if (service.faqs && service.faqs.length > 0) {
+        faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": service.faqs.map((faq: any) => ({
+                "@type": "Question",
+                "name": getTranslated(faq, 'question', locale),
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": getTranslated(faq, 'answer', locale)
+                }
+            }))
+        };
+    }
+
     return (
         <>
             <PageHero
@@ -47,6 +77,17 @@ export default async function ServicesDetail({ params }: { params: { locale: str
             <TechStack techStack={getTranslated(service, 'tech_stack', locale)} />
             <ServiceFAQ faqs={service.faqs || []} locale={locale} />
             <ServiceCTA locale={locale} />
+
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+            />
+            {faqSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                />
+            )}
         </>
     );
 }

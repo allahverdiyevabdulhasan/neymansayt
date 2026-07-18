@@ -1,6 +1,6 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
-from .models import ContactMessage, ContactInfo, SocialMedia
+from .models import ContactMessage, ContactInfo, SocialMedia, GlobalReachStat
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):
@@ -14,3 +14,8 @@ class ContactInfoAdmin(TranslationAdmin):
 @admin.register(SocialMedia)
 class SocialMediaAdmin(admin.ModelAdmin):
     list_display = ('platform_name', 'url')
+
+@admin.register(GlobalReachStat)
+class GlobalReachStatAdmin(TranslationAdmin):
+    list_display = ('country_name', 'client_count', 'order')
+    list_editable = ('client_count', 'order')

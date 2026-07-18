@@ -130,11 +130,11 @@ const nextConfig: NextConfig = {
     async headers() {
         const cspHeader = `
             default-src 'self';
-            script-src 'self' 'unsafe-eval' 'unsafe-inline';
+            script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com;
             style-src 'self' 'unsafe-inline';
             img-src 'self' blob: data: https: http:;
             font-src 'self' data: https: http:;
-            connect-src 'self' http://127.0.0.1:* http://localhost:* ws://127.0.0.1:* ws://localhost:* wss: https: http://neymantech.com https://neymantech.com http://api.neymantech.com https://api.neymantech.com;
+            connect-src 'self' http://127.0.0.1:* http://localhost:* ws://127.0.0.1:* ws://localhost:* wss: https: http://neymantech.com https://neymantech.com http://api.neymantech.com https://api.neymantech.com https://www.google-analytics.com;
             object-src 'none';
             base-uri 'self';
             form-action 'self';

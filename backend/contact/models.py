@@ -33,3 +33,16 @@ class SocialMedia(models.Model):
     class Meta:
         verbose_name = "Sosial Şəbəkə"
         verbose_name_plural = "Sosial Şəbəkələr"
+
+class GlobalReachStat(models.Model):
+    country_name = models.CharField(max_length=100)
+    client_count = models.CharField(max_length=50)
+    order = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name = "Qlobal Fəaliyyət Statistikası"
+        verbose_name_plural = "Qlobal Fəaliyyət Statistikaları"
+        ordering = ['order']
+
+    def __str__(self):
+        return f"{self.country_name} ({self.client_count})"

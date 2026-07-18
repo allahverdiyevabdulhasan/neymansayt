@@ -11,10 +11,12 @@ export default async function ContactPage({ params }: { params: { locale: string
     const contactData = await fetchData('contact/info');
     const socialData = await fetchData('contact/socials');
     const faqData = await fetchData('about/faqs');
+    const reachData = await fetchData('contact/global-reach');
 
     const info = contactData?.[0] || {};
     const socials = socialData || [];
     const faqs = faqData || [];
+    const globalReach = reachData || [];
 
     const title = locale === 'az' ? 'Əlaqə' 
                 : locale === 'ru' ? 'Контакты' 
@@ -46,7 +48,7 @@ export default async function ContactPage({ params }: { params: { locale: string
                 </div>
             </section>
             
-            <GlobalReach locale={locale} />
+            <GlobalReach locale={locale} data={globalReach} />
 
             <ContactFAQSection faqs={faqs} locale={locale} />
         </>

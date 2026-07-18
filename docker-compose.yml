@@ -19,6 +19,7 @@ services:
       - "3005:3005"
     environment:
       - INTERNAL_API_URL=http://backend:8000/api
+      - NEXT_PUBLIC_API_URL=https://neymantech.com/api
     depends_on:
       - backend
     restart: always

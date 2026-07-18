@@ -19,9 +19,13 @@ export async function fetchData(endpoint: string) {
             throw new Error(`Failed to fetch ${endpoint}`);
         }
         let text = await response.text();
+        const publicApiUrl = process.env.NEXT_PUBLIC_API_URL 
+            ? process.env.NEXT_PUBLIC_API_URL.replace(/\/api$/, '') 
+            : 'https://api.neymantech.com';
+
         // Rewrite internal Docker URLs to public URLs so images work on the client side
-        text = text.replace(/http:\/\/backend:8000/g, 'https://api.neymantech.com');
-        text = text.replace(/http:\/\/127\.0\.0\.1:8000/g, 'https://api.neymantech.com');
+        text = text.replace(/http:\/\/backend:8000/g, publicApiUrl);
+        text = text.replace(/http:\/\/127\.0\.0\.1:8000/g, publicApiUrl);
         
         return JSON.parse(text);
     } catch (error) {

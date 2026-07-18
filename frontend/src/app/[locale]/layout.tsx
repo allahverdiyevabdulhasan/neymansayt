@@ -8,8 +8,11 @@ import Header from "@/ui/Header/Header";
 import Footer from "@/ui/Footer";
 // Lazy load WhatsApp widget to avoid render blocking
 import WhatsAppWidget from "@/ui/StickyWhatsapp";
+import Preloader from "@/ui/Preloader";
 import { Poppins } from "next/font/google";
+import Script from "next/script";
 import "@/styles/globals.css";
+import SEOProvider from "@/ui/Schema/SEOProvider";
 
 const poppins = Poppins({
     variable: "--font-poppins",
@@ -36,6 +39,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
             siteName: "Neyman Technology",
             locale: locale === 'az' ? 'az_AZ' : locale === 'tr' ? 'tr_TR' : locale === 'ru' ? 'ru_RU' : 'en_US',
             type: "website",
+        },
+        verification: {
+            google: "RaDT8TUuArKosqMtiOtM0eX3IMMKPvQdFOF9KnIaHGY",
         },
     };
 }
@@ -72,10 +78,58 @@ export default async function LocalLayout({
 
     return (
         <html lang={locale}>
+            <head>
+                <Script 
+                    strategy="afterInteractive" 
+                    src={`https://www.googletagmanager.com/gtag/js?id=G-EHK8SRKCH0`}
+                />
+                <Script
+                    id="gtag-init"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            window.dataLayer = window.dataLayer || [];
+                            function gtag(){dataLayer.push(arguments);}
+                            gtag('js', new Date());
+                            gtag('config', 'G-EHK8SRKCH0');
+                        `,
+                    }}
+                />
+                <SEOProvider />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@graph": [
+                                {
+                                    "@type": "Organization",
+                                    "name": "Neyman Enterprise Technologies",
+                                    "url": "https://neymantech.com",
+                                    "logo": "https://neymantech.com/logo.png",
+                                    "email": "info@neymantech.com",
+                                    "telephone": "+994773312653",
+                                    "sameAs": [
+                                        "https://facebook.com/neymantech",
+                                        "https://instagram.com/neymantech",
+                                        "https://linkedin.com/company/neymantech"
+                                    ]
+                                },
+                                {
+                                    "@type": "WebSite",
+                                    "name": "Neyman Enterprise Technologies",
+                                    "url": "https://neymantech.com"
+                                }
+                            ]
+                        })
+                    }}
+                />
+            </head>
             <body
                 suppressHydrationWarning={true}
                 className={`${poppins.variable} font-sans antialiased`}
             >
+                <Preloader />
                 <NextIntlClientProvider messages={messages}>
                     <Header contact={contact} socials={socialData} locale={locale} />
                     <main className="pt-17 lg:pt-32.5">{children}</main>
